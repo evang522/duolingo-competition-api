@@ -17,7 +17,7 @@ class Competition
     private Collection $competitors;
     private Host $host;
 
-    private function __construct(
+    public function __construct(
         DateTimeImmutable $startDate,
         DateTimeImmutable $endDate,
         string $name,
@@ -32,5 +32,82 @@ class Competition
         $this->basePoints  = $basePoints;
         $this->competitors = $competitors;
         $this->host        = $host;
+    }
+
+    public function setStartDate(DateTimeImmutable $startDate): Competition
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function setEndDate(DateTimeImmutable $endDate): Competition
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    public function setName(string $name): Competition
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function setBasePoints(Collection $basePoints): Competition
+    {
+        $this->basePoints = $basePoints;
+
+        return $this;
+    }
+
+    public function setCompetitors(Collection $competitors): Competition
+    {
+        $this->competitors = $competitors;
+
+        return $this;
+    }
+
+    public function setHost(Host $host): Competition
+    {
+        $this->host = $host;
+
+        return $this;
+    }
+
+    public function id(): string
+    {
+        return $this->id;
+    }
+
+    public function startDate(): DateTimeImmutable
+    {
+        return $this->startDate;
+    }
+
+    public function endDate(): DateTimeImmutable
+    {
+        return $this->endDate;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function basePoints(): Collection
+    {
+        return $this->basePoints;
+    }
+
+    public function competitors(): Collection
+    {
+        return $this->competitors;
+    }
+
+    public function host(): Host
+    {
+        return $this->host;
     }
 }

@@ -3,13 +3,14 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
     <entity name="App\Domain\Competition\Entity\Host"
+            repository-class="App\Infrastructure\Domain\Competition\Repository\HostRepository"
             table="host">
         <id name="id" column="id" type="uuid">
             <generator strategy="CUSTOM"/>
             <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
         </id>
 
-        <many-to-one field="competitions" target-entity="App\Domain\Competition\Entity\Competition"/>
+        <one-to-many mapped-by="competition" field="competitions" target-entity="App\Domain\Competition\Entity\Competition"/>
         <embedded name="credentials" class="App\Infrastructure\Duolingo\Model\Credentials"/>
     </entity>
 </doctrine-mapping>

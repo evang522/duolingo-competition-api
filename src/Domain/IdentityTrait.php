@@ -28,7 +28,7 @@ trait IdentityTrait
     /**
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration
      */
-    public static function fromString(string $uuid): self
+    public static function fromString(string $uuid)
     {
         return new self(Uuid::fromString($uuid));
     }

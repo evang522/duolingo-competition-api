@@ -8,3 +8,11 @@ services:
     public: true
     autoconfigure: true
     class: "App\Presentation\PlaygroundController"
+
+
+  Doctrine\ORM\EntityManagerInterface:
+    alias: "doctrine.orm.entity_manager"
+    public: true
+
+  Doctrine\ORM\EntityManager:
+    alias: "doctrine.orm.entity_manager"

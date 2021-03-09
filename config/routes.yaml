@@ -1,8 +1,10 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-#easy_admin:
-#  resource: "routes/easy_admin.yaml"
+easy_admin:
+  resource: "routes/easy_admin.yaml"
+
+
 
 api_docs:
   methods: GET
