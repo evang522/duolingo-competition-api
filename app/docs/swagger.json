@@ -1,0 +1,12 @@
+{
+  "swagger": "2.0",
+  "basePath": "/",
+  "info": {
+    "title": "Boilerplate Symfony Application",
+    "description": "Change this description however you like",
+    "version": "1.0"
+  },
+  "definitions": {},
+  "paths": {
+  }
+}

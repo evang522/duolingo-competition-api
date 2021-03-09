@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Domain\Build\Entity\Build"
+            repository-class="App\Infrastructure\Build\Repository\BuildRepository"
+            table="build">
+        <id name="id" column="id" type="uuid">
+            <generator strategy="CUSTOM"/>
+            <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
+        </id>
+
+        <field name="startedAt" type="datetime" column="started_at" nullable="true"/>
+        <field name="finishedAt" type="datetime" column="finished_at" nullable="true"/>
+        <field name="completed" type="boolean" column="completed"/>
+    </entity>
+</doctrine-mapping>
