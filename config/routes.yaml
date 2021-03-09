@@ -14,7 +14,7 @@ api_docs_schema:
   path: /api/docs/schema
   controller: App\Presentation\ApiDocs\SwaggerController::schemaAction
 
-example_route:
+playground:
   methods: GET
-  path: /api/example
-  controller: App\Presentation\Example\ExampleController::exampleAction
+  path: /playground
+  controller: App\Presentation\PlaygroundController

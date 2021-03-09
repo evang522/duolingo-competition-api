@@ -14,3 +14,8 @@ doctrine:
         type: xml
         dir: '%kernel.project_dir%/app/mapping/orm/Domain'
         prefix: 'App\Domain'
+      Infrastructure:
+        is_bundle: false
+        type: xml
+        dir: '%kernel.project_dir%/app/mapping/orm/Infrastructure'
+        prefix: 'App\Infrastructure'

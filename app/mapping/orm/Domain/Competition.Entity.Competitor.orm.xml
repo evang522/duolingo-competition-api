@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Domain\Competition\Entity\Competitor"
+            table="competitor">
+        <id name="id" column="id" type="uuid">
+            <generator strategy="CUSTOM"/>
+            <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
+        </id>
+
+        <field name="totalPoints" type="integer" column="finished_at" nullable="false"/>
+        <field name="currentLanguage" type="string" column="current_language" nullable="false"/>
+        <field name="duolingoId" type="string" column="duolingo_id" nullable="false"/>
+        <field name="username" type="string" column="duolingo_username" nullable="false"/>
+        <field name="profilePhotoUrl" type="string" column="profile_photo_url" nullable="true"/>
+        <many-to-many field="competitions" target-entity="App\Domain\Competition\Entity\Competition"/>
+    </entity>
+</doctrine-mapping>
