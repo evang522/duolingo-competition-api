@@ -82,7 +82,7 @@
       "@auto-scripts"
     ],
     "cs-check": "phpcs -p",
-    "cs-fix": "phpcbf -p .",
+    "cs-fix": "phpcbf -p",
     "anal": "phpstan analyse"
   },
   "conflict": {

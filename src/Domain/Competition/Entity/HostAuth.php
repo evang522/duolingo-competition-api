@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Domain\Competition\Entity;
-
 
 class HostAuth
 {
@@ -17,10 +15,9 @@ class HostAuth
     public function __construct(
         Host $host,
         string $authToken
-    )
-    {
-        $this->id = HostAuthId::generate()->asString();
-        $this->host = $host;
+    ) {
+        $this->id        = HostAuthId::generate()->asString();
+        $this->host      = $host;
         $this->authToken = $authToken;
     }
 
@@ -32,6 +29,7 @@ class HostAuth
     public function setHost(Host $host): HostAuth
     {
         $this->host = $host;
+
         return $this;
     }
 
@@ -43,6 +41,7 @@ class HostAuth
     public function setId(string $id): HostAuth
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -54,6 +53,7 @@ class HostAuth
     public function setAuthToken(string $authToken): HostAuth
     {
         $this->authToken = $authToken;
+
         return $this;
     }
 }

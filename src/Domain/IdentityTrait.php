@@ -10,10 +10,7 @@ use Ramsey\Uuid\UuidInterface;
 
 trait IdentityTrait
 {
-    /**
-     * @var UuidInterface 
-     */
-    private $uuid;
+    private UuidInterface $uuid;
 
     private function __construct(UuidInterface $uuid)
     {
@@ -21,8 +18,6 @@ trait IdentityTrait
     }
 
     /**
-     * @return self
-     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration
      */
     public static function generate(): self
@@ -31,9 +26,6 @@ trait IdentityTrait
     }
 
     /**
-     * @param  string $uuid
-     * @return self
-     *
      * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration
      */
     public static function fromString(string $uuid): self

@@ -18,9 +18,6 @@ final class SymfonyMessengerCommandBus implements CommandBus
         $this->messageBus = $messageBus;
     }
 
-    /**
-     * @param object $command
-     */
     public function handle(object $command): void
     {
         $this->doHandle($command);

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace App\Domain\Competition\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
@@ -24,14 +23,13 @@ class Competitor
         string $currentLanguage,
         string $duolingoId,
         int $totalPoints
-    )
-    {
-        $this->username = $username;
+    ) {
+        $this->username        = $username;
         $this->profilePhotoUrl = $profilePhotoUrl;
         $this->currentLanguage = $currentLanguage;
-        $this->duolingoId = $duolingoId;
-        $this->totalPoints = $totalPoints;
-        $this->competitions = new ArrayCollection();
+        $this->duolingoId      = $duolingoId;
+        $this->totalPoints     = $totalPoints;
+        $this->competitions    = new ArrayCollection();
     }
 
     public function id(): CompetitorId
@@ -47,6 +45,7 @@ class Competitor
     public function setUsername(string $username): Competitor
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -58,6 +57,7 @@ class Competitor
     public function setProfilePhotoUrl(?string $profilePhotoUrl): Competitor
     {
         $this->profilePhotoUrl = $profilePhotoUrl;
+
         return $this;
     }
 
@@ -69,6 +69,7 @@ class Competitor
     public function setCurrentLanguage(string $currentLanguage): Competitor
     {
         $this->currentLanguage = $currentLanguage;
+
         return $this;
     }
 
@@ -80,6 +81,7 @@ class Competitor
     public function setDuolingoId(string $duolingoId): Competitor
     {
         $this->duolingoId = $duolingoId;
+
         return $this;
     }
 
@@ -91,6 +93,7 @@ class Competitor
     public function setTotalPoints(int $totalPoints): Competitor
     {
         $this->totalPoints = $totalPoints;
+
         return $this;
     }
 }

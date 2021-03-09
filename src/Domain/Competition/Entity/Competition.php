@@ -2,16 +2,13 @@
 
 declare(strict_types=1);
 
-
 namespace App\Domain\Competition\Entity;
-
 
 use DateTimeImmutable;
 use Doctrine\Common\Collections\Collection;
 
 class Competition
 {
-
     private string $id;
     private DateTimeImmutable $startDate;
     private DateTimeImmutable $endDate;
@@ -27,15 +24,13 @@ class Competition
         Collection $basePoints,
         Collection $competitors,
         Host $host
-    )
-    {
-
-        $this->id = CompetitionId::generate()->asString();
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
-        $this->name = $name;
-        $this->basePoints = $basePoints;
+    ) {
+        $this->id          = CompetitionId::generate()->asString();
+        $this->startDate   = $startDate;
+        $this->endDate     = $endDate;
+        $this->name        = $name;
+        $this->basePoints  = $basePoints;
         $this->competitors = $competitors;
-        $this->host = $host;
+        $this->host        = $host;
     }
 }

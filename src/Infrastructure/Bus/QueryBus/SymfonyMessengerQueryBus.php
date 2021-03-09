@@ -18,7 +18,6 @@ final class SymfonyMessengerQueryBus implements QueryBus\QueryBus
     }
 
     /**
-     * @param object $query
      * @return mixed
      */
     public function query(object $query)

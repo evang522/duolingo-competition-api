@@ -6,5 +6,5 @@ namespace App\Infrastructure\Bus\CommandBus;
 
 interface CommandBus
 {
-    public function handle(object $command) : void;
+    public function handle(object $command): void;
 }

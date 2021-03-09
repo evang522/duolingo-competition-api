@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Domain\Competition\Entity;
-
 
 class BasePoints
 {
@@ -18,9 +16,9 @@ class BasePoints
         Competition $competition,
         int $basePoints
     ) {
-        $this->id = BasePointsId::generate()->asString();
-        $this->competitor = $competitor;
+        $this->id          = BasePointsId::generate()->asString();
+        $this->competitor  = $competitor;
         $this->competition = $competition;
-        $this->basePoints = $basePoints;
+        $this->basePoints  = $basePoints;
     }
 }

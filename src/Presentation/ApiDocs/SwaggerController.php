@@ -10,15 +10,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class SwaggerController extends AbstractController
 {
-    public function schemaAction() : JsonResponse
+    public function schemaAction(): JsonResponse
     {
         return $this->json($this->getSchema());
     }
 
-    public function uiAction() : Response
+    public function uiAction(): Response
     {
         $spec = $this->getSchema();
-        $spec = \json_encode($spec, JSON_THROW_ON_ERROR | \JSON_UNESCAPED_SLASHES | \JSON_HEX_TAG, 512);
+        $spec = \json_encode($spec, \JSON_THROW_ON_ERROR | \JSON_UNESCAPED_SLASHES | \JSON_HEX_TAG, 512);
 
         return $this->render('api/swagger.html.twig', ['spec' => $spec]);
     }
@@ -26,7 +26,7 @@ final class SwaggerController extends AbstractController
     /**
      * @return mixed[]
      */
-    private function getSchema() : array
+    private function getSchema(): array
     {
         $schemaFile = $this->getParameter('kernel.project_dir') . '/app/docs/swagger.json';
 
