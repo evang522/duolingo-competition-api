@@ -14,4 +14,10 @@ class HostRepository extends EntityRepository
     {
         parent::__construct($em, Host::class);
     }
+
+    public function store(Host $host): void
+    {
+        $this->_em->persist($host);
+        $this->_em->flush();
+    }
 }

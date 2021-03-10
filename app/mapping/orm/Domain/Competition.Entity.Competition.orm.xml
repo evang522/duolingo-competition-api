@@ -13,8 +13,7 @@
         <field name="startDate" type="datetime_immutable" column="start_date" nullable="false"/>
         <field name="endDate" type="datetime_immutable" column="end_date" nullable="false"/>
         <field name="name" type="string" column="name" nullable="false"/>
-        <many-to-many field="competitors" target-entity="App\Domain\Competition\Entity\Competitor"
-                      mapped-by="competitor"/>
+        <many-to-many field="competitors" target-entity="App\Domain\Competition\Entity\Competitor"/>
         <many-to-one field="host" target-entity="App\Domain\Competition\Entity\Host">
             <cascade>
                 <cascade-persist/>

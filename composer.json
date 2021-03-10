@@ -12,6 +12,7 @@
     "easycorp/easyadmin-bundle": "3.2.7",
     "friendsofsymfony/rest-bundle": "^2.7",
     "nelmio/cors-bundle": "^2.0",
+    "php-http/guzzle6-adapter": "^2.0",
     "php-http/httplug-bundle": "^1.18.0",
     "ramsey/uuid": "^3.8",
     "ramsey/uuid-doctrine": "^1.5",

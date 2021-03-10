@@ -10,11 +10,12 @@
             <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
         </id>
 
-        <field name="totalPoints" type="integer" column="finished_at" nullable="false"/>
+        <field name="totalPoints" type="integer" column="total_points" nullable="false"/>
         <field name="currentLanguage" type="string" column="current_language" nullable="false"/>
         <field name="duolingoId" type="string" column="duolingo_id" nullable="false"/>
         <field name="username" type="string" column="duolingo_username" nullable="false"/>
         <field name="profilePhotoUrl" type="string" column="profile_photo_url" nullable="true"/>
-        <many-to-many field="competitions" target-entity="App\Domain\Competition\Entity\Competition"/>
+        <many-to-many field="competitions" target-entity="App\Domain\Competition\Entity\Competition"
+                      mapped-by="competition"/>
     </entity>
 </doctrine-mapping>

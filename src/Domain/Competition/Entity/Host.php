@@ -16,15 +16,16 @@ class Host
 
     public function __construct(
         Credentials $credentials
-    ) {
-        $this->id           = HostId::generate()->asString();
-        $this->credentials  = $credentials;
+    )
+    {
+        $this->id = HostId::generate()->asString();
+        $this->credentials = $credentials;
         $this->competitions = new ArrayCollection();
     }
 
-    public function id(): string
+    public function id(): HostId
     {
-        return $this->id;
+        return HostId::fromString($this->id);
     }
 
     public function credentials(): Credentials
@@ -35,5 +36,10 @@ class Host
     public function competitions()
     {
         return $this->competitions;
+    }
+
+    public function __toString(): string
+    {
+        return $this->credentials->username();
     }
 }
