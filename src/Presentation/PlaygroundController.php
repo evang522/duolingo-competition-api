@@ -4,38 +4,36 @@ declare(strict_types=1);
 
 namespace App\Presentation;
 
-use App\Domain\Competition\Command\UpdateCompetitionParticipants;
-use App\Domain\Competition\Command\UpdateCompetitorStats;
 use App\Domain\Competition\Entity\Competition;
-use App\Domain\Competition\Entity\CompetitionId;
-use App\Domain\Competition\Entity\Competitor;
 use App\Infrastructure\Bus\CommandBus\CommandBus;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use FOS\RestBundle\View\View;
+use FOS\RestBundle\View\ViewHandlerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class PlaygroundController extends AbstractController
+class PlaygroundController
 {
     private EntityManagerInterface $em;
     private CommandBus $commandBus;
+    private ViewHandlerInterface $viewHandler;
 
     public function __construct(
         EntityManagerInterface $em,
-        CommandBus $commandBus
-    ) {
-        $this->em         = $em;
+        CommandBus $commandBus,
+        ViewHandlerInterface $viewHandler
+    )
+    {
+        $this->em = $em;
         $this->commandBus = $commandBus;
+        $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response
     {
         $repo = $this->em->getRepository(Competition::class);
+        $competition = $repo->findOneBy([]);
 
-        $competition = $repo->get(CompetitionId::fromString('d383b2f6-7d73-413e-a6e3-3c0e85b53f4e'));
-
-        $this->commandBus->handle(new UpdateCompetitionParticipants($competition->id()));
-        dd('hi');
-        return new Response('hi');
+        return $this->viewHandler->handle(View::create($competition));
     }
 }

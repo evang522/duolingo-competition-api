@@ -1,0 +1,16 @@
+jms_serializer:
+  visitors:
+    xml_serialization:
+      format_output: '%kernel.debug%'
+  metadata:
+    auto_detection: true
+    directories:
+      app:
+        namespace_prefix: "App"
+        path: '%kernel.project_dir%/app/mapping/serializer/app/'
+  #            another-name:
+  #                namespace_prefix: "My\\BarBundle"
+  #                path: "@MyBarBundle/Resources/config/serializer"
+  property_naming:
+    separator: ""
+    id: 'jms_serializer.identical_property_naming_strategy'

@@ -20,3 +20,7 @@ playground:
   methods: GET
   path: /playground
   controller: App\Presentation\PlaygroundController
+
+api:
+  prefix: /api
+  resource: "routes/api.yaml"

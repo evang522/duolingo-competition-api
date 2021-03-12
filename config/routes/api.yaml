@@ -1,0 +1,8 @@
+competition.get:
+  methods: GET
+  path: /competition/{id}
+  controller: 'App\Presentation\Rest\Competition\Controller\GetCompetitionController'
+  requirements:
+    id: '^[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{4}-[0-9A-Fa-f]{12}$'
+#  serialization_groups: [ ]
+

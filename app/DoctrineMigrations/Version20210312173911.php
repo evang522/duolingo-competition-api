@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210309233521 extends AbstractMigration
+final class Version20210312173911 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -46,8 +46,8 @@ final class Version20210309233521 extends AbstractMigration
         $this->addSql('ALTER TABLE base_points ADD CONSTRAINT FK_4FDA164078A5D405 FOREIGN KEY (competitor_id) REFERENCES competitor (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE base_points ADD CONSTRAINT FK_4FDA16407B39D312 FOREIGN KEY (competition_id) REFERENCES competition (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE competition ADD CONSTRAINT FK_B50A2CB1CF2713FD FOREIGN KEY (host) REFERENCES host (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE competition_competitor ADD CONSTRAINT FK_43C2DB927B39D312 FOREIGN KEY (competition_id) REFERENCES competition (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE competition_competitor ADD CONSTRAINT FK_43C2DB9278A5D405 FOREIGN KEY (competitor_id) REFERENCES competitor (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE competition_competitor ADD CONSTRAINT FK_43C2DB927B39D312 FOREIGN KEY (competition_id) REFERENCES competition (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE competition_competitor ADD CONSTRAINT FK_43C2DB9278A5D405 FOREIGN KEY (competitor_id) REFERENCES competitor (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
     public function down(Schema $schema) : void

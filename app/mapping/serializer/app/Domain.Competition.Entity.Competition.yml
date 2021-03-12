@@ -1,0 +1,9 @@
+App\Domain\Competition\Entity\Competition:
+  exclusion_policy: ALL
+  properties:
+    id:
+      type: string
+    name: ~
+    startDate: ~
+    endDate: ~
+    competitors: ~
