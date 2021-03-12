@@ -1,0 +1,45 @@
+image: tmaier/docker-compose:latest
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+
+stages:
+  - test
+  - deploy
+
+cache: {}
+
+before_script:
+  - docker info
+  - docker-compose --version
+  - docker network create duo
+  - mv .env.ci .env
+#
+#test-backend:
+#  stage: test
+#  script:
+#    - docker-compose up -d
+#    - docker-compose exec -T php composer install
+#    - docker-compose exec -T php composer cs-check
+#    - docker-compose exec -T php composer analyse
+#    - docker-compose exec -T php composer test
+#  only:
+#    - branches
+
+deploy-prod:
+  stage: deploy
+  before_script:
+    - apk add git
+  script:
+    - echo "Deploy master"
+    - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/duo-comp-api.git HEAD:master -f
+  environment:
+    name: production
+    url: https://www.duo-comp-api.herokuapp.com/
+  only:
+    - master
+  when: manual
+  cache: {}
