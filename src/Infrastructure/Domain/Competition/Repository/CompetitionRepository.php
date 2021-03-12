@@ -6,6 +6,7 @@ namespace App\Infrastructure\Domain\Competition\Repository;
 
 use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\CompetitionId;
+use App\Domain\Competition\Entity\HostId;
 use App\Infrastructure\Repository\EntityRepository;
 use Doctrine\ORM\EntityManager;
 
@@ -24,5 +25,12 @@ class CompetitionRepository extends EntityRepository
         }
 
         return $competition;
+    }
+
+    public function hostConnectedToCompetitions(HostId $hostId): bool
+    {
+        return $this->count([
+                'host' => $hostId
+            ]) >= 1;
     }
 }

@@ -15,9 +15,7 @@ class Client
 {
     private HttpClient $httpClient;
 
-    public function __construct(
-        HttpClient $httpClient
-    )
+    public function __construct(HttpClient $httpClient)
     {
         $this->httpClient = $httpClient;
     }
@@ -29,16 +27,18 @@ class Client
             'password' => $host->credentials()->password()
         ], JSON_THROW_ON_ERROR));
 
-        return $this->httpClient->sendRequest($request)->getHeader('jwt')[0];
+
+        $request = $this->httpClient->sendRequest($request);
+        if ($request->getHeader('jwt') === []) {
+            throw new \RuntimeException(sprintf(
+                'Login to Duolingo Failed for host "%s"', $host->credentials()->username())
+            );
+        }
+        return $request->getHeader('jwt')[0];
     }
 
     public function getCompetitorInformation(Competitor $competitor, Host $host): UserInformation
     {
-
-        // https://www.duolingo.com/2017-06-30/users/52146611?fields=name,streak,learningLanguage&_=1532406936067
-        // https://www.duolingo.com/users/evang522
-
-        //https://www.duolingo.com/2017-06-30/users/52146611?fields=name,streak,totalXp,learningLanguage,picture,username,email&_=1532406936067
         $request = new Request(
             'GET',
             'https://www.duolingo.com/2017-06-30/users/' . $competitor->duolingoId() . '?fields=name,streak,totalXp,learningLanguage,picture,username,email&_=1532406936067',

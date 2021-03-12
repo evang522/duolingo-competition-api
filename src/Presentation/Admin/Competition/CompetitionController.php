@@ -37,7 +37,9 @@ class CompetitionController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            Field::new('id')->hideOnForm(),
+            Field::new('id')
+                ->hideOnForm()
+                ->setTemplatePath('/field/uuid.html.twig'),
             Field::new('name'),
             AssociationField::new('host'),
             AssociationField::new('competitors')

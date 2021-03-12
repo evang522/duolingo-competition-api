@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class CompetitorController extends AbstractCrudController
 {
@@ -26,11 +27,13 @@ class CompetitorController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            Field::new('id')->hideOnForm(),
-            Field::new('username', 'Duolingo Username'),
-            Field::new('profilePhotoUrl'),
-            Field::new('currentLanguage'),
+            Field::new('id')
+                ->hideOnForm()
+                ->setTemplatePath('/field/uuid.html.twig'),
             Field::new('duolingoId'),
+            Field::new('username', 'Duolingo Username'),
+            ImageField::new('profilePhotoUrl'),
+            Field::new('currentLanguage'),
         ];
     }
 
@@ -38,4 +41,5 @@ class CompetitorController extends AbstractCrudController
     {
         return new Competitor('Username', null, 'German', 'Duolingo ID', 0);
     }
+
 }

@@ -1,0 +1,13 @@
+{#handleCopyUuid is defined in ff_admin.js as a base function for easyadmin#}
+{% if value %}
+  <span id="uuid-{{ value }}"
+        title="Click to copy Id"
+        onclick="(() => {handleCopyUuid('{{ value }}')})()"
+        style="word-break: break-word; font-family: monospace; border: 1px solid #c8c8c8; font-size: 12px; padding: 3px; background: #e2e2e2; color: black; border-radius: 5px; cursor: pointer;">
+      {{ value }}
+    </span>
+{% else %}
+  <div class="empty collection-empty">
+    {{ include(entity_config.templates.label_null) }}
+  </div>
+{% endif %}
