@@ -25,6 +25,21 @@ class Host
         $this->emailAddress = $emailAddress;
     }
 
+    public function setCredentials(Credentials $credentials): void
+    {
+        $this->credentials = $credentials;
+    }
+
+    public function setCompetitions($competitions): void
+    {
+        $this->competitions = $competitions;
+    }
+
+    public function setEmailAddress(string $emailAddress): void
+    {
+        $this->emailAddress = $emailAddress;
+    }
+
     public function id(): HostId
     {
         return HostId::fromString($this->id);
