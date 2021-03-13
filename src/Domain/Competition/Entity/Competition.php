@@ -25,16 +25,15 @@ class Competition
         string $name,
         Host $host,
         ?Competitor $winner = null
-    )
-    {
-        $this->id = CompetitionId::generate()->asString();
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
-        $this->name = $name;
-        $this->basePoints = new ArrayCollection();
+    ) {
+        $this->id          = CompetitionId::generate()->asString();
+        $this->startDate   = $startDate;
+        $this->endDate     = $endDate;
+        $this->name        = $name;
+        $this->basePoints  = new ArrayCollection();
         $this->competitors = new ArrayCollection();
-        $this->host = $host;
-        $this->winner = $winner;
+        $this->host        = $host;
+        $this->winner      = $winner;
     }
 
     public function winner(): ?Competitor

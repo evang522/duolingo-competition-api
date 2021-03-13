@@ -15,8 +15,7 @@ class CompetitionRepository extends EntityRepository
 {
     public function __construct(
         EntityManager $em
-    )
-    {
+    ) {
         parent::__construct($em, Competition::class);
     }
 
@@ -34,7 +33,6 @@ class CompetitionRepository extends EntityRepository
     {
         return $this->count(['host' => $hostId]) >= 1;
     }
-
 
     public function getAny(): Competition
     {

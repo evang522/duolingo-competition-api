@@ -20,11 +20,10 @@ class BasePointsRepository extends EntityRepository
     public function findForCompetitorAndCompetition(
         Competitor $competitor,
         Competition $competition
-    ): ?BasePoints
-    {
+    ): ?BasePoints {
         return $this->findOneBy([
             'competition' => $competition,
-            'competitor' => $competitor
+            'competitor' => $competitor,
         ]);
     }
 }

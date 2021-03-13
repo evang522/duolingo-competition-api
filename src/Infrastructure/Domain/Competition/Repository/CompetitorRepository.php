@@ -33,6 +33,7 @@ class CompetitorRepository extends EntityRepository
         );
 
         $this->store($competitor);
+
         return $competitor;
     }
 

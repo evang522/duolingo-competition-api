@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Infrastructure\Domain\Competition\Service;
-
 
 use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\Competitor;
@@ -20,8 +18,7 @@ class GetCompetitorsForCompetition
     public function __construct(
         CompetitorRepository $competitorRepository,
         BasePointsRepository $basePointsRepository
-    )
-    {
+    ) {
         $this->competitorRepository = $competitorRepository;
         $this->basePointsRepository = $basePointsRepository;
     }
@@ -31,7 +28,7 @@ class GetCompetitorsForCompetition
     {
         $competitors = $this->competitorRepository->findByCompetition($competition->id());
 
-        return array_map(
+        return \array_map(
             function (Competitor $competitor) use ($competition): CompetitorForCompetition {
                 $basePoints = $this->basePointsRepository
                     ->findForCompetitorAndCompetition($competitor, $competition);
@@ -39,7 +36,7 @@ class GetCompetitorsForCompetition
                 $totalPoints = $competitor->totalPoints();
 
                 if ($basePoints !== null) {
-                    $totalPoints = max([0, ($totalPoints - $basePoints->basePoints())]);
+                    $totalPoints = \max([0, $totalPoints - $basePoints->basePoints()]);
                 }
 
                 return new CompetitorForCompetition(

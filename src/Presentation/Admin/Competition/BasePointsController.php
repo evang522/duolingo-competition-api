@@ -9,8 +9,6 @@ use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\Competitor;
 use App\Infrastructure\Domain\Competition\Repository\CompetitionRepository;
 use App\Infrastructure\Domain\Competition\Repository\CompetitorRepository;
-use App\Infrastructure\Domain\Competition\Repository\HostRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -21,21 +19,14 @@ use EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudAutocompleteType;
 
 class BasePointsController extends AbstractCrudController
 {
-    private EntityManagerInterface $entityManager;
-    private HostRepository $hostRepository;
     private CompetitorRepository $competitorRepository;
     private CompetitionRepository $competitionRepository;
 
     public function __construct(
-        EntityManagerInterface $entityManager,
-        HostRepository $hostRepository,
         CompetitorRepository $competitorRepository,
         CompetitionRepository $competitionRepository
-    )
-    {
-        $this->entityManager = $entityManager;
-        $this->hostRepository = $hostRepository;
-        $this->competitorRepository = $competitorRepository;
+    ) {
+        $this->competitorRepository  = $competitorRepository;
         $this->competitionRepository = $competitionRepository;
     }
 
@@ -55,7 +46,7 @@ class BasePointsController extends AbstractCrudController
                 ->autocomplete()
                 ->setFormType(CrudAutocompleteType::class)
                 ->setFieldFqcn(Competition::class),
-            NumberField::new('basePoints')
+            NumberField::new('basePoints'),
         ];
     }
 

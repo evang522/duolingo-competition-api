@@ -21,8 +21,7 @@ class CompetitionController extends AbstractCrudController
 
     public function __construct(
         HostRepository $hostRepository
-    )
-    {
+    ) {
         $this->hostRepository = $hostRepository;
     }
 

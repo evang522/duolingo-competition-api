@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Domain\Competition\Model;
-
 
 class CompetitorForCompetition
 {
@@ -20,13 +18,12 @@ class CompetitorForCompetition
         string $duolingoUserId,
         int $competitionPoints,
         string $profilePhotoUrl
-    )
-    {
-        $this->competitionId = $competitionId;
-        $this->duolingoUserName = $duolingoUserName;
-        $this->duolingoUserId = $duolingoUserId;
+    ) {
+        $this->competitionId     = $competitionId;
+        $this->duolingoUserName  = $duolingoUserName;
+        $this->duolingoUserId    = $duolingoUserId;
         $this->competitionPoints = $competitionPoints;
-        $this->profilePhotoUrl = $profilePhotoUrl;
+        $this->profilePhotoUrl   = $profilePhotoUrl;
     }
 
     public function competitionId(): string
