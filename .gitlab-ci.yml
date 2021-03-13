@@ -38,7 +38,7 @@ deploy-prod:
     - git push https://heroku:$HEROKU_API_KEY@git.heroku.com/duo-comp-api.git HEAD:master -f
   environment:
     name: production
-    url: https://www.duo-comp-api.herokuapp.com/
+    url: https://duo-comp-api.herokuapp.com/
   only:
     - master
   when: manual
