@@ -17,12 +17,14 @@ class Competition
     private Collection $basePoints;
     private Collection $competitors;
     private Host $host;
+    private ?Competitor $winner;
 
     public function __construct(
         DateTimeImmutable $startDate,
         DateTimeImmutable $endDate,
         string $name,
-        Host $host
+        Host $host,
+        ?Competitor $winner = null
     )
     {
         $this->id = CompetitionId::generate()->asString();
@@ -32,6 +34,17 @@ class Competition
         $this->basePoints = new ArrayCollection();
         $this->competitors = new ArrayCollection();
         $this->host = $host;
+        $this->winner = $winner;
+    }
+
+    public function winner(): ?Competitor
+    {
+        return $this->winner;
+    }
+
+    public function setWinner(?Competitor $winner): void
+    {
+        $this->winner = $winner;
     }
 
     public function id(): CompetitionId

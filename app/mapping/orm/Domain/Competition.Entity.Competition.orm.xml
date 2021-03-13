@@ -34,5 +34,6 @@
             <join-column name="host" referenced-column-name="id">
             </join-column>
         </many-to-one>
+        <one-to-one field="winner" target-entity="App\Domain\Competition\Entity\Competitor"/>
     </entity>
 </doctrine-mapping>
