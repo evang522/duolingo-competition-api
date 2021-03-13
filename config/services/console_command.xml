@@ -10,5 +10,7 @@
             <bind key="$environment" type="string">%kernel.environment%</bind>
         </defaults>
         <service id="App\Application\Command\ResetEnvironmentCommand"/>
+        <service id="App\Application\Command\User\CreateUserCommand"/>
+        <service id="App\Application\Command\Competition\UpdateAllCompetitionsCommand"/>
     </services>
 </container>

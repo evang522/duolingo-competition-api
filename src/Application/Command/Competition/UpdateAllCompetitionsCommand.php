@@ -20,10 +20,9 @@ class UpdateAllCompetitionsCommand extends Command
     public function __construct(
         CommandBus $commandBus,
         CompetitionRepository $competitionRepository
-    )
-    {
+    ) {
         parent::__construct();
-        $this->commandBus = $commandBus;
+        $this->commandBus            = $commandBus;
         $this->competitionRepository = $competitionRepository;
     }
 

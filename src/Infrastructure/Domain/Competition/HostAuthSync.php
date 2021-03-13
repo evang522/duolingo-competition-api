@@ -23,7 +23,7 @@ class HostAuthSync
 
     public function syncHostAuth(Host $host): void
     {
-        $token = $this->duolingoClient->getTokenForHost($host);
+//        $token = $this->duolingoClient->getTokenForHost($host);
         $host->credentials()->setAuthToken($token);
         $this->hostRepository->store($host);
     }

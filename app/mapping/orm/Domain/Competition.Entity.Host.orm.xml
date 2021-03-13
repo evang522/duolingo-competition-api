@@ -10,6 +10,7 @@
             <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
         </id>
 
+        <field name="emailAddress" type="string" nullable="false"/>
         <one-to-many mapped-by="host" field="competitions" target-entity="App\Domain\Competition\Entity\Competition"/>
         <embedded name="credentials" class="App\Infrastructure\Duolingo\Model\Credentials"/>
     </entity>

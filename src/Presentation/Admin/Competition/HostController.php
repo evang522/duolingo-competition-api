@@ -41,18 +41,19 @@ class HostController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            Field::new('emailAddress'),
             Field::new('id')
                 ->hideOnForm()
                 ->setTemplatePath('/field/uuid.html.twig'),
-            Field::new('credentials.username', 'Duolingo username'),
-            Field::new('credentials.password', 'Duolingo Password'),
+            Field::new('credentials.authToken', 'Duolingo Token'),
         ];
     }
 
     public function createEntity(string $entityFqcn): Host
     {
         return new Host(
-            new Credentials('test@email.com', 'My Duolingo Password', null),
+            'host@host.com',
+            new Credentials('null'),
         );
     }
 

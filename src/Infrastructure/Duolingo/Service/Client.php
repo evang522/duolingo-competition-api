@@ -19,23 +19,23 @@ class Client
         $this->httpClient = $httpClient;
     }
 
-    public function getTokenForHost(Host $host): string
-    {
-        $request = new Request('POST', 'https://www.duolingo.com/login', [], \json_encode([
-            'login' => $host->credentials()->username(),
-            'password' => $host->credentials()->password(),
-        ], \JSON_THROW_ON_ERROR));
-
-        $request = $this->httpClient->sendRequest($request);
-        if ($request->getHeader('jwt') === []) {
-            throw new \RuntimeException(\sprintf(
-                'Login to Duolingo Failed for host "%s"',
-                $host->credentials()->username()
-            ));
-        }
-
-        return $request->getHeader('jwt')[0];
-    }
+//    public function getTokenForHost(Host $host): string
+//    {
+//        $request = new Request('POST', 'https://www.duolingo.com/login', [], \json_encode([
+//            'login' => $host->credentials()->username(),
+//            'password' => $host->credentials()->password(),
+//        ], \JSON_THROW_ON_ERROR));
+//
+//        $request = $this->httpClient->sendRequest($request);
+//        if ($request->getHeader('jwt') === []) {
+//            throw new \RuntimeException(\sprintf(
+//                'Login to Duolingo Failed for host "%s"',
+//                $host->credentials()->username()
+//            ));
+//        }
+//
+//        return $request->getHeader('jwt')[0];
+//    }
 
     public function getCompetitorInformation(Competitor $competitor, Host $host): UserInformation
     {

@@ -1,0 +1,19 @@
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        https://symfony.com/schema/dic/services/services-1.0.xsd">
+    <services>
+        <defaults autoconfigure="true" autowire="true" public="true">
+            <tag name="controller.service_arguments"/>
+        </defaults>
+        <service id="App\Presentation\Admin\Root\DashboardController"/>
+        <service id="App\Presentation\Admin\Root\LoginController"/>
+        <service id="App\Presentation\Admin\Competition\CompetitionController"/>
+        <service id="App\Presentation\Admin\Competition\CompetitorController"/>
+        <service id="App\Presentation\Admin\Competition\HostController"/>
+        <service id="App\Presentation\Admin\User\AdminUserController"/>
+        <service id="App\Presentation\Admin\Competition\BasePointsController"/>
+        <service id="App\Presentation\Rest\Competition\Controller\GetCompetitionController"/>
+    </services>
+
+</container>

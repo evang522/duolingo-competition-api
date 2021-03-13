@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Application\Command;
 
 use Exception;
@@ -9,7 +11,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\NullOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use function array_merge;
 
 class ResetEnvironmentCommand extends Command
 {
@@ -17,8 +18,7 @@ class ResetEnvironmentCommand extends Command
 
     public function __construct(
         string $environment
-    )
-    {
+    ) {
         $this->environment = $environment;
         parent::__construct();
     }
@@ -55,16 +55,16 @@ class ResetEnvironmentCommand extends Command
 
 
         $io->success('Successfully Reset DB');
+
         return 0;
     }
 
     /**
      * Run another command.
      *
-     * @param string $name The name of the command.
+     * @param string  $name    The name of the command.
      * @param mixed[] $options The options.
      *
-     * @return bool
      * @throws Exception
      */
     private function runCommand(string $name, array $options = []): bool
@@ -73,8 +73,8 @@ class ResetEnvironmentCommand extends Command
         $command->mergeApplicationDefinition();
         $command = clone $command;
 
-        $parameters = array_merge($options, ['command' => $name, '--env' => $this->environment]);
-        $input = new ArrayInput($parameters);
+        $parameters = \array_merge($options, ['command' => $name, '--env' => $this->environment]);
+        $input      = new ArrayInput($parameters);
         $input->setInteractive(false);
 
         $returnCode = $command->run($input, new NullOutput());

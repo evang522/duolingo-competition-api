@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Admin\Root;
 
+use App\Domain\Competition\Entity\BasePoints;
 use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\Competitor;
 use App\Domain\Competition\Entity\Host;
@@ -53,6 +54,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Competitions', 'fa fa-flag', Competition::class),
             MenuItem::linkToCrud('Participants', 'fa fa-running', Competitor::class),
             MenuItem::linkToCrud('Hosts', 'fa fa-user', Host::class),
+            MenuItem::linkToCrud('BasePoints', 'fa fa-user', BasePoints::class),
+            MenuItem::section('Users'),
             MenuItem::linkToCrud('Admin Users', 'fa fa-user', AdminUser::class),
         ];
     }

@@ -28,12 +28,12 @@ class CompetitorController extends AbstractCrudController
     {
         return [
             Field::new('id')
-                ->hideOnForm()
-                ->setTemplatePath('/field/uuid.html.twig'),
-            Field::new('duolingoId'),
+                ->hideOnForm(),
+            Field::new('duolingoId')->hideOnIndex(),
             Field::new('username', 'Duolingo Username'),
-            ImageField::new('profilePhotoUrl'),
+            Field::new('profilePhotoUrl'),
             Field::new('currentLanguage'),
+            Field::new('totalPoints'),
         ];
     }
 

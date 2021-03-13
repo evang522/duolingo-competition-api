@@ -21,9 +21,8 @@ class CreateUserCommand extends Command
     public function __construct(
         EntityManagerInterface $entityManager,
         UserPasswordUpdater $passwordUpdater
-    )
-    {
-        $this->entityManager = $entityManager;
+    ) {
+        $this->entityManager   = $entityManager;
         $this->passwordUpdater = $passwordUpdater;
         parent::__construct();
     }
@@ -32,7 +31,7 @@ class CreateUserCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $email = $io->askQuestion(new Question('What Email Address?'));
+        $email         = $io->askQuestion(new Question('What Email Address?'));
         $plainPassword = $io->askQuestion(new Question('Plain Password'));
 
         try {
@@ -47,7 +46,6 @@ class CreateUserCommand extends Command
         } catch (\RuntimeException $exception) {
             $io->error('User Creation Failed: ' . $exception->getMessage());
         }
-
 
         return 0;
     }

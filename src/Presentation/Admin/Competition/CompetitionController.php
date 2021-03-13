@@ -6,10 +6,7 @@ namespace App\Presentation\Admin\Competition;
 
 use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\Competitor;
-use App\Domain\Competition\Entity\Host;
-use App\Infrastructure\Duolingo\Model\Credentials;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Infrastructure\Domain\Competition\Repository\HostRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -20,12 +17,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudAutocompleteType;
 
 class CompetitionController extends AbstractCrudController
 {
-    private EntityManagerInterface $entityManager;
+    private HostRepository $hostRepository;
 
     public function __construct(
-        EntityManagerInterface $entityManager
-    ) {
-        $this->entityManager = $entityManager;
+        HostRepository $hostRepository
+    )
+    {
+        $this->hostRepository = $hostRepository;
     }
 
     public static function getEntityFqcn(): string
@@ -57,16 +55,12 @@ class CompetitionController extends AbstractCrudController
 
     public function createEntity(string $entityFqcn): Competition
     {
-        $host = new Host(new Credentials('hello', 'hello', null));
-        $this->entityManager->persist($host);
-        $this->entityManager->flush();
+        $host = $this->hostRepository->getOneOrCreateDefault();
 
         return new Competition(
             new \DateTimeImmutable(),
             new \DateTimeImmutable(),
             'New Competition',
-            new ArrayCollection(),
-            new ArrayCollection(),
             $host
         );
     }

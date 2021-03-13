@@ -12,11 +12,11 @@
         <import resource="services/duolingo.xml"/>
         <import resource="services/host.xml"/>
         <import resource="services/competition.xml"/>
+        <import resource="services/controller.xml"/>
+        <import resource="services/user.xml"/>
     </imports>
 
     <services>
         <defaults autowire="true" autoconfigure="true" public="false"/>
-
-
     </services>
 </container>

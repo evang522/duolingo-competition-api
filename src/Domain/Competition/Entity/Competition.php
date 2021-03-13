@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Domain\Competition\Entity;
 
 use DateTimeImmutable;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class Competition
@@ -21,17 +22,16 @@ class Competition
         DateTimeImmutable $startDate,
         DateTimeImmutable $endDate,
         string $name,
-        Collection $basePoints,
-        Collection $competitors,
         Host $host
-    ) {
-        $this->id          = CompetitionId::generate()->asString();
-        $this->startDate   = $startDate;
-        $this->endDate     = $endDate;
-        $this->name        = $name;
-        $this->basePoints  = $basePoints;
-        $this->competitors = $competitors;
-        $this->host        = $host;
+    )
+    {
+        $this->id = CompetitionId::generate()->asString();
+        $this->startDate = $startDate;
+        $this->endDate = $endDate;
+        $this->name = $name;
+        $this->basePoints = new ArrayCollection();
+        $this->competitors = new ArrayCollection();
+        $this->host = $host;
     }
 
     public function id(): CompetitionId
@@ -59,18 +59,6 @@ class Competition
     public function setEndDate(DateTimeImmutable $endDate): Competition
     {
         $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): Competition
-    {
-        $this->name = $name;
 
         return $this;
     }
@@ -108,6 +96,23 @@ class Competition
     public function setHost(Host $host): Competition
     {
         $this->host = $host;
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->name();
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): Competition
+    {
+        $this->name = $name;
 
         return $this;
     }
