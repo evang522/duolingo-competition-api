@@ -5,6 +5,7 @@
     <services>
         <defaults autoconfigure="true" autowire="true" public="true">
             <tag name="controller.service_arguments"/>
+            <bind key="$baseUrl" type="string">%base_url%</bind>
         </defaults>
         <service id="App\Presentation\Admin\Root\DashboardController"/>
         <service id="App\Presentation\Admin\Root\LoginController"/>

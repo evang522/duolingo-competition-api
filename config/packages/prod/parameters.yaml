@@ -1,0 +1,2 @@
+parameters:
+  base_url: 'https://duo-comp-api.herokuapp.com'

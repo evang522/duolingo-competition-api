@@ -10,19 +10,25 @@ use App\Infrastructure\Domain\Competition\Repository\HostRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudAutocompleteType;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 class CompetitionController extends AbstractCrudController
 {
     private HostRepository $hostRepository;
+    private string $baseUrl;
 
     public function __construct(
-        HostRepository $hostRepository
+        HostRepository $hostRepository,
+        string $baseUrl
     ) {
         $this->hostRepository = $hostRepository;
+        $this->baseUrl        = $baseUrl;
     }
 
     public static function getEntityFqcn(): string
@@ -47,9 +53,26 @@ class CompetitionController extends AbstractCrudController
         ];
     }
 
+    public function redirectToApiResource(AdminContext $adminContext): Response
+    {
+        $dto = $adminContext->getEntity();
+
+        $entity = $dto->getInstance();
+        \assert($entity instanceof Competition);
+
+        return new RedirectResponse($this->baseUrl . '/api/competition/' . $entity->id()->asString());
+    }
+
     public function configureActions(Actions $actions): Actions
     {
-        return $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
+        $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
+        $actions->add(
+            Crud::PAGE_DETAIL,
+            Action::new('redirectToApiResource', 'View In Api')
+                ->linkToCrudAction('redirectToApiResource')
+        );
+
+        return $actions;
     }
 
     public function createEntity(string $entityFqcn): Competition
