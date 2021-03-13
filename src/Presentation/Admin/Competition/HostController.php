@@ -23,10 +23,9 @@ class HostController extends AbstractCrudController
     public function __construct(
         CompetitionRepository $competitionRepository,
         AdminUrlGenerator $urlGenerator
-    )
-    {
+    ) {
         $this->competitionRepository = $competitionRepository;
-        $this->urlGenerator = $urlGenerator;
+        $this->urlGenerator          = $urlGenerator;
     }
 
     public static function getEntityFqcn(): string
@@ -67,7 +66,7 @@ class HostController extends AbstractCrudController
             return $this->redirect(
                 $this->urlGenerator
                     ->setAction('index')
-                    ->setController(__CLASS__)
+                    ->setController(self::class)
                     ->generateUrl()
             );
         }

@@ -14,10 +14,9 @@ class Credentials
         string $username,
         string $password,
         ?string $authToken
-    )
-    {
-        $this->username = $username;
-        $this->password = $password;
+    ) {
+        $this->username  = $username;
+        $this->password  = $password;
         $this->authToken = $authToken;
     }
 
@@ -29,6 +28,7 @@ class Credentials
     public function setAuthToken(?string $authToken): Credentials
     {
         $this->authToken = $authToken;
+
         return $this;
     }
 
@@ -40,6 +40,7 @@ class Credentials
     public function setUsername(string $username): Credentials
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -51,6 +52,7 @@ class Credentials
     public function setPassword(string $password): Credentials
     {
         $this->password = $password;
+
         return $this;
     }
 }

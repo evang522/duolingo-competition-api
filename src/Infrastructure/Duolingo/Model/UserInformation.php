@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Infrastructure\Duolingo\Model;
-
 
 class UserInformation
 {
@@ -18,10 +16,9 @@ class UserInformation
         int $totalPoints,
         string $profilePhotoUrl,
         string $currentLanguage
-    )
-    {
-        $this->duoUsername = $duoUsername;
-        $this->totalPoints = $totalPoints;
+    ) {
+        $this->duoUsername     = $duoUsername;
+        $this->totalPoints     = $totalPoints;
         $this->profilePhotoUrl = $profilePhotoUrl;
         $this->currentLanguage = $currentLanguage;
     }

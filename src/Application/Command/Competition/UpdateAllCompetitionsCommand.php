@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Application\Command\Competition;
-
 
 use App\Domain\Competition\Command\UpdateCompetitionParticipants;
 use App\Infrastructure\Bus\CommandBus\CommandBus;
@@ -16,13 +14,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class UpdateAllCompetitionsCommand extends Command
 {
-    /**
-     * @var CommandBus
-     */
     private CommandBus $commandBus;
-    /**
-     * @var CompetitionRepository
-     */
     private CompetitionRepository $competitionRepository;
 
     public function __construct(
@@ -35,7 +27,7 @@ class UpdateAllCompetitionsCommand extends Command
         $this->competitionRepository = $competitionRepository;
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
@@ -47,10 +39,11 @@ class UpdateAllCompetitionsCommand extends Command
         }
 
         $io->success('Done!');
+
         return 0;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('duo:competition:update_all');
     }

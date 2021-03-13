@@ -1,3 +1,12 @@
+admin_login:
+  controller: 'App\Presentation\Admin\Root\LoginController::loginAction'
+  path: /admin/login
+
+admin_security_logout:
+  methods: GET
+  path: /logout
+
 dashboard:
-    controller: 'App\Presentation\Admin\Root\DashboardController::index'
-    path: /admin
+  controller: 'App\Presentation\Admin\Root\DashboardController::index'
+  path: /admin
+

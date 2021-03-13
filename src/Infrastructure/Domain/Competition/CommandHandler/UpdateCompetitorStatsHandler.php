@@ -28,28 +28,25 @@ class UpdateCompetitorStatsHandler implements MessageHandlerInterface
         HostRepository $hostRepository,
         HostAuthSync $hostAuthSync,
         CompetitorRepository $competitorRepository
-    )
-    {
-        $this->httpClient = $httpClient;
-        $this->duolingoClient = $duolingoClient;
-        $this->hostRepository = $hostRepository;
-        $this->hostAuthSync = $hostAuthSync;
+    ) {
+        $this->httpClient           = $httpClient;
+        $this->duolingoClient       = $duolingoClient;
+        $this->hostRepository       = $hostRepository;
+        $this->hostAuthSync         = $hostAuthSync;
         $this->competitorRepository = $competitorRepository;
     }
 
     public function __invoke(UpdateCompetitorStats $command): void
     {
-
-        /** @var Host $host */
         $host = $this->hostRepository->find($command->hostId());
+        \assert($host instanceof Host);
 
-        /** @var Competitor $competitor */
         $competitor = $this->competitorRepository->find($command->competitorId());
+        \assert($competitor instanceof Competitor);
 
         $this->hostAuthSync->syncHostAuth($host);
 
         $information = $this->duolingoClient->getCompetitorInformation($competitor, $host);
-
 
         $competitor->setCurrentLanguage($information->currentLanguage());
         $competitor->setProfilePhotoUrl($information->profilePhotoUrl());

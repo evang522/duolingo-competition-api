@@ -16,10 +16,9 @@ class Host
 
     public function __construct(
         Credentials $credentials
-    )
-    {
-        $this->id = HostId::generate()->asString();
-        $this->credentials = $credentials;
+    ) {
+        $this->id           = HostId::generate()->asString();
+        $this->credentials  = $credentials;
         $this->competitions = new ArrayCollection();
     }
 

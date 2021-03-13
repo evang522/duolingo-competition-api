@@ -6,7 +6,6 @@ namespace App\Infrastructure\Duolingo\Service;
 
 use App\Domain\Competition\Entity\Competitor;
 use App\Domain\Competition\Entity\Host;
-use App\Domain\Competition\Entity\HostAuth;
 use App\Infrastructure\Duolingo\Model\UserInformation;
 use GuzzleHttp\Psr7\Request;
 use Http\Client\HttpClient;
@@ -22,18 +21,19 @@ class Client
 
     public function getTokenForHost(Host $host): string
     {
-        $request = new Request('POST', 'https://www.duolingo.com/login', [], json_encode([
+        $request = new Request('POST', 'https://www.duolingo.com/login', [], \json_encode([
             'login' => $host->credentials()->username(),
-            'password' => $host->credentials()->password()
-        ], JSON_THROW_ON_ERROR));
-
+            'password' => $host->credentials()->password(),
+        ], \JSON_THROW_ON_ERROR));
 
         $request = $this->httpClient->sendRequest($request);
         if ($request->getHeader('jwt') === []) {
-            throw new \RuntimeException(sprintf(
-                'Login to Duolingo Failed for host "%s"', $host->credentials()->username())
-            );
+            throw new \RuntimeException(\sprintf(
+                'Login to Duolingo Failed for host "%s"',
+                $host->credentials()->username()
+            ));
         }
+
         return $request->getHeader('jwt')[0];
     }
 
@@ -43,21 +43,19 @@ class Client
             'GET',
             'https://www.duolingo.com/2017-06-30/users/' . $competitor->duolingoId() . '?fields=name,streak,totalXp,learningLanguage,picture,username,email&_=1532406936067',
             [
-                'Authorization' => 'Bearer ' . $host->credentials()->authToken()
+                'Authorization' => 'Bearer ' . $host->credentials()->authToken(),
             ]
         );
 
         $response = $this->httpClient->sendRequest($request);
 
-        $body = json_decode($response->getBody()->getContents(), true, 512, JSON_THROW_ON_ERROR);
+        $body = \json_decode($response->getBody()->getContents(), true, 512, \JSON_THROW_ON_ERROR);
 
         return new UserInformation(
             $body['username'],
-            (int)$body['totalXp'],
+            (int) $body['totalXp'],
             $body['picture'],
             $body['learningLanguage']
         );
-
-
     }
 }

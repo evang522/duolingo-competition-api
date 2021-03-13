@@ -8,6 +8,10 @@
         <import resource="services/command.xml"/>
         <import resource="services/services_bus.xml"/>
         <import resource="services/common.xml"/>
+        <import resource="services/console_command.xml"/>
+        <import resource="services/duolingo.xml"/>
+        <import resource="services/host.xml"/>
+        <import resource="services/competition.xml"/>
     </imports>
 
     <services>

@@ -7,6 +7,7 @@ namespace App\Presentation\Admin\Root;
 use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\Competitor;
 use App\Domain\Competition\Entity\Host;
+use App\Domain\User\Entity\AdminUser;
 use App\Presentation\Admin\Competition\CompetitionController;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -20,8 +21,7 @@ class DashboardController extends AbstractDashboardController
 
     public function __construct(
         AdminUrlGenerator $adminUrlGenerator
-    )
-    {
+    ) {
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
@@ -33,12 +33,16 @@ class DashboardController extends AbstractDashboardController
 
     public function index(): Response
     {
-        return $this->redirect(
-            $this->adminUrlGenerator
-                ->setController(CompetitionController::class)
-                ->setAction('index')
-                ->generateUrl()
-        );
+        if ($this->getUser()) {
+            return $this->redirect(
+                $this->adminUrlGenerator
+                    ->setController(CompetitionController::class)
+                    ->setAction('index')
+                    ->generateUrl()
+            );
+        }
+
+        return parent::index();
     }
 
     public function configureMenuItems(): iterable
@@ -49,6 +53,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Competitions', 'fa fa-flag', Competition::class),
             MenuItem::linkToCrud('Participants', 'fa fa-running', Competitor::class),
             MenuItem::linkToCrud('Hosts', 'fa fa-user', Host::class),
+            MenuItem::linkToCrud('Admin Users', 'fa fa-user', AdminUser::class),
         ];
     }
 }

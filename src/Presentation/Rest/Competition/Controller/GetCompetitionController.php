@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-
 namespace App\Presentation\Rest\Competition\Controller;
-
 
 use App\Domain\Competition\Entity\CompetitionId;
 use App\Infrastructure\Domain\Competition\Repository\CompetitionRepository;
@@ -22,10 +20,9 @@ class GetCompetitionController extends AbstractController
     public function __construct(
         CompetitionRepository $competitionRepository,
         ViewHandlerInterface $viewHandler
-    )
-    {
+    ) {
         $this->competitionRepository = $competitionRepository;
-        $this->viewHandler = $viewHandler;
+        $this->viewHandler           = $viewHandler;
     }
 
     public function __invoke(Request $request): Response

@@ -7,21 +7,15 @@ namespace Application\Migrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20210312173911 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return '';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
-
         $this->addSql('CREATE TABLE base_points (id UUID NOT NULL, competitor_id UUID DEFAULT NULL, competition_id UUID DEFAULT NULL, base_points INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4FDA164078A5D405 ON base_points (competitor_id)');
         $this->addSql('CREATE INDEX IDX_4FDA16407B39D312 ON base_points (competition_id)');
@@ -50,21 +44,8 @@ final class Version20210312173911 extends AbstractMigration
         $this->addSql('ALTER TABLE competition_competitor ADD CONSTRAINT FK_43C2DB9278A5D405 FOREIGN KEY (competitor_id) REFERENCES competitor (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
-
-        $this->addSql('CREATE SCHEMA public');
-        $this->addSql('ALTER TABLE base_points DROP CONSTRAINT FK_4FDA16407B39D312');
-        $this->addSql('ALTER TABLE competition_competitor DROP CONSTRAINT FK_43C2DB927B39D312');
-        $this->addSql('ALTER TABLE base_points DROP CONSTRAINT FK_4FDA164078A5D405');
-        $this->addSql('ALTER TABLE competition_competitor DROP CONSTRAINT FK_43C2DB9278A5D405');
-        $this->addSql('ALTER TABLE competition DROP CONSTRAINT FK_B50A2CB1CF2713FD');
-        $this->addSql('DROP TABLE base_points');
-        $this->addSql('DROP TABLE competition');
-        $this->addSql('DROP TABLE competition_competitor');
-        $this->addSql('DROP TABLE competitor');
-        $this->addSql('DROP TABLE host');
+        $this->throwIrreversibleMigrationException();
     }
 }

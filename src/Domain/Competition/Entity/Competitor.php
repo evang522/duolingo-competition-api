@@ -23,15 +23,14 @@ class Competitor
         string $currentLanguage,
         string $duolingoId,
         int $totalPoints
-    )
-    {
-        $this->id = CompetitorId::generate()->asString();
-        $this->username = $username;
+    ) {
+        $this->id              = CompetitorId::generate()->asString();
+        $this->username        = $username;
         $this->profilePhotoUrl = $profilePhotoUrl;
         $this->currentLanguage = $currentLanguage;
-        $this->duolingoId = $duolingoId;
-        $this->totalPoints = $totalPoints;
-        $this->competitions = new ArrayCollection();
+        $this->duolingoId      = $duolingoId;
+        $this->totalPoints     = $totalPoints;
+        $this->competitions    = new ArrayCollection();
     }
 
     public function Competitions()

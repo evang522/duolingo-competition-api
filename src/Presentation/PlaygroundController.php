@@ -22,16 +22,15 @@ class PlaygroundController
         EntityManagerInterface $em,
         CommandBus $commandBus,
         ViewHandlerInterface $viewHandler
-    )
-    {
-        $this->em = $em;
-        $this->commandBus = $commandBus;
+    ) {
+        $this->em          = $em;
+        $this->commandBus  = $commandBus;
         $this->viewHandler = $viewHandler;
     }
 
     public function __invoke(Request $request): Response
     {
-        $repo = $this->em->getRepository(Competition::class);
+        $repo        = $this->em->getRepository(Competition::class);
         $competition = $repo->findOneBy([]);
 
         return $this->viewHandler->handle(View::create($competition));

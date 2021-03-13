@@ -41,5 +41,4 @@ class CompetitorController extends AbstractCrudController
     {
         return new Competitor('Username', null, 'German', 'Duolingo ID', 0);
     }
-
 }

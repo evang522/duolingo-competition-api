@@ -24,15 +24,14 @@ class Competition
         Collection $basePoints,
         Collection $competitors,
         Host $host
-    )
-    {
-        $this->id = CompetitionId::generate()->asString();
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
-        $this->name = $name;
-        $this->basePoints = $basePoints;
+    ) {
+        $this->id          = CompetitionId::generate()->asString();
+        $this->startDate   = $startDate;
+        $this->endDate     = $endDate;
+        $this->name        = $name;
+        $this->basePoints  = $basePoints;
         $this->competitors = $competitors;
-        $this->host = $host;
+        $this->host        = $host;
     }
 
     public function id(): CompetitionId

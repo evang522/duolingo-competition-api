@@ -29,8 +29,6 @@ class CompetitionRepository extends EntityRepository
 
     public function hostConnectedToCompetitions(HostId $hostId): bool
     {
-        return $this->count([
-                'host' => $hostId
-            ]) >= 1;
+        return $this->count(['host' => $hostId]) >= 1;
     }
 }

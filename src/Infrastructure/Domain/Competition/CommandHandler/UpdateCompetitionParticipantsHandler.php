@@ -18,10 +18,9 @@ class UpdateCompetitionParticipantsHandler implements MessageHandlerInterface
     public function __construct(
         CompetitionRepository $competitionRepository,
         CommandBus $commandBus
-    )
-    {
+    ) {
         $this->competitionRepository = $competitionRepository;
-        $this->commandBus = $commandBus;
+        $this->commandBus            = $commandBus;
     }
 
     public function __invoke(UpdateCompetitionParticipants $command): void
