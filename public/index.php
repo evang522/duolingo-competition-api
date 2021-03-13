@@ -14,10 +14,10 @@ if ($_SERVER['APP_DEBUG']) {
     Debug::enable();
 }
 
-Request::setTrustedProxies([$request->server->get('REMOTE_ADDR')], Request::HEADER_X_FORWARDED_ALL);
 
-$kernel   = new Kernel($_SERVER['APP_ENV'], (bool) $_SERVER['APP_DEBUG']);
-$request  = Request::createFromGlobals();
+$kernel = new Kernel($_SERVER['APP_ENV'], (bool)$_SERVER['APP_DEBUG']);
+$request = Request::createFromGlobals();
+Request::setTrustedProxies([$request->server->get('REMOTE_ADDR')], Request::HEADER_X_FORWARDED_ALL);
 $response = $kernel->handle($request);
 $response->send();
 $kernel->terminate($request, $response);
