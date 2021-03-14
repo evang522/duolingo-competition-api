@@ -50,6 +50,10 @@ class CompetitionController extends AbstractCrudController
                 ->setFieldFqcn(Competitor::class),
             Field::new('startDate'),
             Field::new('endDate'),
+            AssociationField::new('winner')
+                ->autocomplete()
+                ->setFormType(CrudAutocompleteType::class)
+                ->setFieldFqcn(Competitor::class),
         ];
     }
 

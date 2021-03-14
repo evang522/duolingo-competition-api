@@ -6,8 +6,10 @@ App\Domain\Competition\Entity\Competition:
     name: ~
     startDate: ~
     endDate: ~
-    winner: ~
   virtual_properties:
+    winner:
+      serialized_name: winner
+      exp: service('App\\Infrastructure\\Domain\\Competition\\Service\\Serializer\\CompetitionSerializer').winnerId(object)
     competitorsForCompetition:
       serialized_name: competitors
       exp: service('App\\Infrastructure\\Domain\\Competition\\Service\\GetCompetitorsForCompetition').getListForCompetition(object)

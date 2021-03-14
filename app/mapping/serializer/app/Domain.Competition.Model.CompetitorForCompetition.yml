@@ -1,0 +1,10 @@
+App\Domain\Competition\Model\CompetitorForCompetition:
+  exclusion_policy: ALL
+  properties:
+    competitionId: ~
+    duolingoUserName: ~
+    competitionPoints:
+      type: int
+    duolingoUserId: ~
+    profilePhotoUrl: ~
+    currentLanguage: ~

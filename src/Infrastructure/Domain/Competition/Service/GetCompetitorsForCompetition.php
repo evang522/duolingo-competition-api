@@ -44,7 +44,8 @@ class GetCompetitorsForCompetition
                     $competitor->username(),
                     $competitor->duolingoId(),
                     $totalPoints,
-                    $competitor->profilePhotoUrl()
+                    $competitor->currentLanguage(),
+                    $competitor->profilePhotoUrl(),
                 );
             },
             $competitors

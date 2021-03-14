@@ -11,18 +11,21 @@ class CompetitorForCompetition
     private int $competitionPoints;
     private string $duolingoUserId;
     private ?string $profilePhotoUrl;
+    private string $currentLanguage;
 
     public function __construct(
         string $competitionId,
         string $duolingoUserName,
         string $duolingoUserId,
         int $competitionPoints,
+        string $currentLanguage,
         ?string $profilePhotoUrl
     ) {
         $this->competitionId     = $competitionId;
         $this->duolingoUserName  = $duolingoUserName;
         $this->duolingoUserId    = $duolingoUserId;
         $this->competitionPoints = $competitionPoints;
+        $this->currentLanguage   = $currentLanguage;
         $this->profilePhotoUrl   = $profilePhotoUrl;
     }
 
@@ -36,18 +39,23 @@ class CompetitorForCompetition
         return $this->duolingoUserName;
     }
 
-    public function CompetitionPoints(): int
+    public function competitionPoints(): int
     {
         return $this->competitionPoints;
     }
 
-    public function ProfilePhotoUrl(): string
+    public function profilePhotoUrl(): string
     {
         return $this->profilePhotoUrl;
     }
 
-    public function DuolingoUserId(): string
+    public function duolingoUserId(): string
     {
         return $this->duolingoUserId;
+    }
+
+    public function currentLanguage(): string
+    {
+        return $this->currentLanguage;
     }
 }

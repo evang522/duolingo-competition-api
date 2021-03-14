@@ -12,6 +12,7 @@
         <service id="App\Infrastructure\Domain\Competition\Repository\CompetitorRepository"/>
         <service id="App\Infrastructure\Domain\Competition\Repository\CompetitionRepository"/>
         <service id="App\Infrastructure\Domain\Competition\Repository\BasePointsRepository"/>
+        <service public="true" id="App\Infrastructure\Domain\Competition\Service\Serializer\CompetitionSerializer"/>
         <service public="true" id="App\Infrastructure\Domain\Competition\Service\GetCompetitorsForCompetition"/>
     </services>
 </container>

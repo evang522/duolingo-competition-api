@@ -10,6 +10,7 @@ use App\Domain\Competition\Entity\Host;
 use App\Domain\Competition\Entity\HostId;
 use App\Infrastructure\Repository\EntityRepository;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CompetitionRepository extends EntityRepository
 {
@@ -23,7 +24,7 @@ class CompetitionRepository extends EntityRepository
     {
         $competition = $this->find($competitionId->asString());
         if ($competition === null) {
-            throw new \RuntimeException('Competition not found');
+            throw new NotFoundHttpException('Competition not found');
         }
 
         return $competition;
