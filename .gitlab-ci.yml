@@ -10,7 +10,7 @@ stages:
   - test
   - deploy
 
-cache: {}
+cache: { }
 
 before_script:
   - docker info
@@ -41,5 +41,4 @@ deploy-prod:
     url: https://duo-comp-api.herokuapp.com/
   only:
     - master
-  when: manual
-  cache: {}
+  cache: { }

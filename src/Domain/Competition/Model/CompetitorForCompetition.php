@@ -9,15 +9,15 @@ class CompetitorForCompetition
     private string $competitionId;
     private string $duolingoUserName;
     private int $competitionPoints;
-    private string $profilePhotoUrl;
     private string $duolingoUserId;
+    private ?string $profilePhotoUrl;
 
     public function __construct(
         string $competitionId,
         string $duolingoUserName,
         string $duolingoUserId,
         int $competitionPoints,
-        string $profilePhotoUrl
+        ?string $profilePhotoUrl
     ) {
         $this->competitionId     = $competitionId;
         $this->duolingoUserName  = $duolingoUserName;
