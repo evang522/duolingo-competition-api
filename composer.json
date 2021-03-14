@@ -17,6 +17,7 @@
     "php-http/httplug-bundle": "^1.18.0",
     "ramsey/uuid": "^3.8",
     "ramsey/uuid-doctrine": "^1.5",
+    "sentry/sentry-symfony": "^4.0",
     "swagger-api/swagger-ui": "^3.23",
     "symfony/asset": "4.4.0",
     "symfony/console": "^4.3",

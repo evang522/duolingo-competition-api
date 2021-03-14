@@ -12,6 +12,18 @@
         <service id="Doctrine\ORM\EntityManager"
                  alias="doctrine.orm.entity_manager"
         />
+
+        <service id="Psr\Http\Message\ServerRequestFactoryInterface"
+                 alias="httplug.psr17_server_request_factory.default"/>
+        <service id="Psr\Http\Message\StreamFactoryInterface"
+                 alias="httplug.psr17_stream_factory.default"/>
+
+        <service id="Psr\Http\Message\UploadedFileFactoryInterface"
+                 alias="httplug.psr17_uploaded_file_factory.default"
+        />
+        <service id="Psr\Http\Message\ResponseFactoryInterface"
+                 alias="httplug.psr17_response_factory.default"
+        />
     </services>
 
 </container>

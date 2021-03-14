@@ -14,6 +14,7 @@ services:
     environment:
       APP_ENV: dev
       DATABASE_URL: "postgres://postgresql:postgresql@pgsql:5432/duo"
+      SENTRY_DSN: "https://3fb864e5f56b4a23ad7807aa22bb9f0d@o390203.ingest.sentry.io/5674563"
     networks:
       duo-network:
         ipv4_address: 10.203.0.3
