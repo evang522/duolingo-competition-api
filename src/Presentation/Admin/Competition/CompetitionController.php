@@ -22,13 +22,16 @@ class CompetitionController extends AbstractCrudController
 {
     private HostRepository $hostRepository;
     private string $baseUrl;
+    private string $frontendBaseUrl;
 
     public function __construct(
         HostRepository $hostRepository,
-        string $baseUrl
+        string $baseUrl,
+        string $frontendBaseUrl
     ) {
-        $this->hostRepository = $hostRepository;
-        $this->baseUrl        = $baseUrl;
+        $this->hostRepository  = $hostRepository;
+        $this->baseUrl         = $baseUrl;
+        $this->frontendBaseUrl = $frontendBaseUrl;
     }
 
     public static function getEntityFqcn(): string
@@ -67,13 +70,29 @@ class CompetitionController extends AbstractCrudController
         return new RedirectResponse($this->baseUrl . '/api/competition/' . $entity->id()->asString());
     }
 
+    public function redirectToFrontend(AdminContext $adminContext): Response
+    {
+        $dto = $adminContext->getEntity();
+
+        $entity = $dto->getInstance();
+        \assert($entity instanceof Competition);
+
+        return new RedirectResponse($this->frontendBaseUrl . '?competition=' . $entity->id()->asString());
+    }
+
     public function configureActions(Actions $actions): Actions
     {
         $actions->add(Crud::PAGE_INDEX, Action::DETAIL);
         $actions->add(
             Crud::PAGE_DETAIL,
-            Action::new('redirectToApiResource', 'View In Api')
-                ->linkToCrudAction('redirectToApiResource')
+            Action::new('redirectToApiResource', false, 'fa fa-server')
+                ->linkToCrudAction('redirectToApiResource')->addCssClass('btn')
+        );
+        $actions->add(
+            Crud::PAGE_DETAIL,
+            Action::new('redirectToFrontend', false, 'fa fa-eye')
+                ->linkToCrudAction('redirectToFrontend')
+                ->addCssClass('btn btn-secondary')
         );
 
         return $actions;
