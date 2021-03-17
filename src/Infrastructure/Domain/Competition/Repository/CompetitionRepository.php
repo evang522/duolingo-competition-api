@@ -9,6 +9,7 @@ use App\Domain\Competition\Entity\CompetitionId;
 use App\Domain\Competition\Entity\Host;
 use App\Domain\Competition\Entity\HostId;
 use App\Infrastructure\Repository\EntityRepository;
+use DateTime;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -60,5 +61,18 @@ class CompetitionRepository extends EntityRepository
     {
         $this->_em->persist($competition);
         $this->_em->flush();
+    }
+
+    /**
+     * @return Competition[]
+     */
+    public function findAllStartingWithin5Minutes(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.startDate BETWEEN :now AND :fiveMinutesFromNow')
+            ->setParameter('now', new DateTime())
+            ->setParameter('fiveMinutesFromNow', (new DateTime())->add(new \DateInterval('PT5M')))
+            ->getQuery()
+            ->getResult();
     }
 }

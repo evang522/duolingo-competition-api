@@ -12,5 +12,6 @@
         <service id="App\Application\Command\ResetEnvironmentCommand"/>
         <service id="App\Application\Command\User\CreateUserCommand"/>
         <service id="App\Application\Command\Competition\UpdateAllCompetitionsCommand"/>
+        <service id="App\Application\Command\Competition\DispatchCompetitionStartedEvents"/>
     </services>
 </container>

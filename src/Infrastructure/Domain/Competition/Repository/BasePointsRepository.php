@@ -26,4 +26,10 @@ class BasePointsRepository extends EntityRepository
             'competitor' => $competitor,
         ]);
     }
+
+    public function store(BasePoints $basePoints): void
+    {
+        $this->_em->persist($basePoints);
+        $this->_em->flush();
+    }
 }
