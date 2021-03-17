@@ -66,12 +66,12 @@ class CompetitionRepository extends EntityRepository
     /**
      * @return Competition[]
      */
-    public function findAllStartingWithin5Minutes(): array
+    public function findAllStartingWithin10Minutes(): array
     {
         return $this->createQueryBuilder('c')
-            ->where('c.startDate BETWEEN :now AND :fiveMinutesFromNow')
+            ->where('c.startDate BETWEEN :now AND :tenMinutesFromNow')
             ->setParameter('now', new DateTime())
-            ->setParameter('fiveMinutesFromNow', (new DateTime())->add(new \DateInterval('PT5M')))
+            ->setParameter('tenMinutesFromNow', (new DateTime())->add(new \DateInterval('PT10M')))
             ->getQuery()
             ->getResult();
     }

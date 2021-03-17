@@ -35,15 +35,15 @@ class DispatchCompetitionStartedEvents extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $competitions = $this->competitionRepository->findAllStartingWithin5Minutes();
+        $competitions = $this->competitionRepository->findAllStartingWithin10Minutes();
 
         if (\count($competitions) === 0) {
-            $io->writeln('There are no competitions starting within 5 minutes');
+            $io->writeln('There are no competitions starting within 10 minutes');
 
             return 0;
         }
 
-        foreach ($this->competitionRepository->findAllStartingWithin5Minutes() as $competition) {
+        foreach ($this->competitionRepository->findAllStartingWithin10Minutes() as $competition) {
             $this->eventDispatcher->dispatch(new CompetitionStarted($competition));
             $io->writeln(\sprintf('Event dispatched for competition "%s"', $competition->id()->asString()));
         }
