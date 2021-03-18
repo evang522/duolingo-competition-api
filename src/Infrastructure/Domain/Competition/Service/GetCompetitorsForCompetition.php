@@ -46,6 +46,7 @@ class GetCompetitorsForCompetition
                     $totalPoints,
                     $competitor->currentLanguage(),
                     $competitor->profilePhotoUrl(),
+                    $competitor->streak()
                 );
             },
             $competitors

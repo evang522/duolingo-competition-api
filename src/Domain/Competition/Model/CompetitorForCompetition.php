@@ -12,6 +12,7 @@ class CompetitorForCompetition
     private string $duolingoUserId;
     private ?string $profilePhotoUrl;
     private string $currentLanguage;
+    private int $streak;
 
     public function __construct(
         string $competitionId,
@@ -19,7 +20,8 @@ class CompetitorForCompetition
         string $duolingoUserId,
         int $competitionPoints,
         string $currentLanguage,
-        ?string $profilePhotoUrl
+        ?string $profilePhotoUrl,
+        int $streak
     ) {
         $this->competitionId     = $competitionId;
         $this->duolingoUserName  = $duolingoUserName;
@@ -27,6 +29,12 @@ class CompetitorForCompetition
         $this->competitionPoints = $competitionPoints;
         $this->currentLanguage   = $currentLanguage;
         $this->profilePhotoUrl   = $profilePhotoUrl;
+        $this->streak            = $streak;
+    }
+
+    public function streak(): int
+    {
+        return $this->streak;
     }
 
     public function competitionId(): string
