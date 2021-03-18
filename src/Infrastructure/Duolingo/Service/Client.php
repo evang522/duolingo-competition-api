@@ -41,7 +41,7 @@ class Client
     {
         $request = new Request(
             'GET',
-            'https://www.duolingo.com/2017-06-30/users/' . $competitor->duolingoId() . '?fields=name,streak,totalXp,learningLanguage,picture,username,email&_=1532406936067',
+            'https://www.duolingo.com/2017-06-30/users/' . $competitor->duolingoId() . '?fields=name,streak,totalXp,learningLanguage,picture,username,streak',
             [
                 'Authorization' => 'Bearer ' . $host->credentials()->authToken(),
             ]
@@ -55,7 +55,8 @@ class Client
             $body['username'],
             (int) $body['totalXp'],
             $body['picture'],
-            $body['learningLanguage']
+            $body['learningLanguage'],
+            (int) $body['streak']
         );
     }
 }

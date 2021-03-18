@@ -41,5 +41,7 @@ class UpdateCompetitorStatsHandler implements MessageHandlerInterface
         $competitor->setCurrentLanguage($information->currentLanguage());
         $competitor->setProfilePhotoUrl($information->profilePhotoUrl());
         $competitor->setTotalPoints($information->totalPoints());
+        $competitor->setUsername($information->duoUsername());
+        $competitor->setStreak($information->streak());
     }
 }

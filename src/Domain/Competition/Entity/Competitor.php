@@ -16,13 +16,15 @@ class Competitor
     private string $duolingoId;
     private int $totalPoints;
     private Collection $competitions;
+    private int $streak;
 
     public function __construct(
         string $username,
         ?string $profilePhotoUrl,
         string $currentLanguage,
         string $duolingoId,
-        int $totalPoints
+        int $totalPoints,
+        int $streak
     ) {
         $this->id              = CompetitorId::generate()->asString();
         $this->username        = $username;
@@ -31,9 +33,20 @@ class Competitor
         $this->duolingoId      = $duolingoId;
         $this->totalPoints     = $totalPoints;
         $this->competitions    = new ArrayCollection();
+        $this->streak          = $streak;
     }
 
-    public function Competitions()
+    public function streak(): int
+    {
+        return $this->streak;
+    }
+
+    public function setStreak(int $streak): void
+    {
+        $this->streak = $streak;
+    }
+
+    public function competitions()
     {
         return $this->competitions;
     }

@@ -10,17 +10,25 @@ class UserInformation
     private int $totalPoints;
     private string $profilePhotoUrl;
     private string $currentLanguage;
+    private int $streak;
 
     public function __construct(
         string $duoUsername,
         int $totalPoints,
         string $profilePhotoUrl,
-        string $currentLanguage
+        string $currentLanguage,
+        int $streak
     ) {
         $this->duoUsername     = $duoUsername;
         $this->totalPoints     = $totalPoints;
         $this->profilePhotoUrl = $profilePhotoUrl;
         $this->currentLanguage = $currentLanguage;
+        $this->streak          = $streak;
+    }
+
+    public function streak(): int
+    {
+        return $this->streak;
     }
 
     public function duoUsername(): string

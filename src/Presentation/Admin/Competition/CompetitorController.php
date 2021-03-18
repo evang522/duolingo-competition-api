@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class CompetitorController extends AbstractCrudController
 {
@@ -28,16 +29,17 @@ class CompetitorController extends AbstractCrudController
         return [
             Field::new('id')
                 ->hideOnForm(),
-            Field::new('duolingoId')->hideOnIndex(),
-            Field::new('username', 'Duolingo Username'),
+            Field::new('duolingoId'),
+            Field::new('username', 'Duolingo Username')->hideOnIndex(),
             Field::new('profilePhotoUrl'),
             Field::new('currentLanguage'),
-            Field::new('totalPoints'),
+            NumberField::new('totalPoints'),
+            NumberField::new('streak'),
         ];
     }
 
     public function createEntity(string $entityFqcn): Competitor
     {
-        return new Competitor('Username', null, 'German', 'Duolingo ID', 0);
+        return new Competitor('Username', null, 'German', 'Duolingo ID', 0, 0);
     }
 }
