@@ -34,7 +34,7 @@ services:
         ipv4_address: 10.203.0.6
   pgsql:
     container_name: duo-pgsql
-    build: ./.docker/db
+    image: "evang522/duo_db_18_03_2021"
     volumes:
       - /var/lib/postgresql/data
     ports:
