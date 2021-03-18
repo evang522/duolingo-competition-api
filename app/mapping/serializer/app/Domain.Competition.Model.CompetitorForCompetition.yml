@@ -8,3 +8,5 @@ App\Domain\Competition\Model\CompetitorForCompetition:
     duolingoUserId: ~
     profilePhotoUrl: ~
     currentLanguage: ~
+    streak:
+      type: int
