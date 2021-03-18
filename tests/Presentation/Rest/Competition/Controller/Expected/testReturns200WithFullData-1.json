@@ -1,0 +1,36 @@
+{
+  "winner": null,
+  "competitors": [
+    {
+      "competitionId": "00000000-0000-4000-a000-000000000001",
+      "duolingoUserName": "Competitor username 1",
+      "competitionPoints": 4000,
+      "duolingoUserId": "Duolingo ID 1",
+      "profilePhotoUrl": "https://profilepic.com",
+      "currentLanguage": "de",
+      "streak": 1
+    },
+    {
+      "competitionId": "00000000-0000-4000-a000-000000000001",
+      "duolingoUserName": "Competitor username 2",
+      "competitionPoints": 2,
+      "duolingoUserId": "Duolingo ID 2",
+      "profilePhotoUrl": "https://profilepic.com",
+      "currentLanguage": "de",
+      "streak": 2
+    },
+    {
+      "competitionId": "00000000-0000-4000-a000-000000000001",
+      "duolingoUserName": "Competitor username 3",
+      "competitionPoints": 3,
+      "duolingoUserId": "Duolingo ID 3",
+      "profilePhotoUrl": "https://profilepic.com",
+      "currentLanguage": "de",
+      "streak": 3
+    }
+  ],
+  "id": "00000000-0000-4000-a000-000000000001",
+  "startDate": "@string@.isDateTime()",
+  "endDate": "@string@.isDateTime()",
+  "name": "Default Competition1"
+}

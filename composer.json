@@ -52,12 +52,14 @@
     "preferred-install": {
       "*": "dist"
     },
-    "sort-packages": true
+    "sort-packages": true,
+    "optimize-autoloader": true
   },
   "autoload": {
     "psr-4": {
       "App\\": "src/",
-      "App\\DataFixtures\\": "fixtures/DataFixtures"
+      "App\\FixtureBuilder\\": "fixtures/FixtureBuilder/",
+      "App\\DataFixtures\\": "fixtures/DataFixtures/"
     }
   },
   "autoload-dev": {

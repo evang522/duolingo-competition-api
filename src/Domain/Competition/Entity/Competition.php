@@ -14,7 +14,9 @@ class Competition
     private DateTimeImmutable $startDate;
     private DateTimeImmutable $endDate;
     private string $name;
+    /** @var Collection|BasePoints[] */
     private Collection $basePoints;
+    /** @var Collection|Competitor[] */
     private Collection $competitors;
     private Host $host;
     private ?Competitor $winner;
@@ -46,6 +48,11 @@ class Competition
         $this->winner = $winner;
     }
 
+    public function setIdFromString(string $id): void
+    {
+        $this->id = $id;
+    }
+
     public function id(): CompetitionId
     {
         return CompetitionId::fromString($this->id);
@@ -75,16 +82,23 @@ class Competition
         return $this;
     }
 
+    /** @return Collection|BasePoints[] */
     public function basePoints(): Collection
     {
         return $this->basePoints;
     }
 
+    /** @param Collection|BasePoints[] $basePoints */
     public function setBasePoints(Collection $basePoints): Competition
     {
         $this->basePoints = $basePoints;
 
         return $this;
+    }
+
+    public function addCompetitor(Competitor $competitor): void
+    {
+        $this->competitors->add($competitor);
     }
 
     /** @return Collection|Competitor[] */
@@ -93,6 +107,7 @@ class Competition
         return $this->competitors;
     }
 
+    /** @param Collection|Competitor[] $competitors */
     public function setCompetitors(Collection $competitors): Competition
     {
         $this->competitors = $competitors;

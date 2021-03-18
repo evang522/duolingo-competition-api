@@ -74,6 +74,10 @@
       <option name="INSTALLED_PATHS" value="$PROJECT_DIR$/vendor/doctrine/coding-standard/lib/Doctrine" />
       <option name="EXTENSIONS" value="php,js,css,inc" />
     </inspection_tool>
+    <inspection_tool class="PhpDocMissingReturnTagInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false">
+      <option name="SKIP_ON_EMPTY_PHPDOC" value="false" />
+    </inspection_tool>
+    <inspection_tool class="PhpDocMissingThrowsInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PhpDocSignatureInspection" enabled="false" level="INFORMATION" enabled_by_default="false" />
     <inspection_tool class="SecurityAdvisoriesInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="optionConfiguration">

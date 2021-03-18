@@ -6,8 +6,7 @@
             repository-class="App\Infrastructure\Domain\Competition\Repository\HostRepository"
             table="host">
         <id name="id" column="id" type="uuid">
-            <generator strategy="CUSTOM"/>
-            <custom-id-generator class="Ramsey\Uuid\Doctrine\UuidGenerator"/>
+            <generator strategy="NONE"/>
         </id>
 
         <field name="emailAddress" type="string" nullable="false"/>

@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
+<!-- https://phpunit.de/manual/current/en/appendixes.configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
          colors="true"
-         bootstrap="config/bootstrap.php"
+         bootstrap="tests/bootstrap.php"
+         cacheResult="false"
+         failOnWarning="true"
+         verbose="true"
 >
-    <php>
-        <ini name="error_reporting" value="-1" />
-        <server name="APP_ENV" value="test" force="true" />
-        <server name="SHELL_VERBOSITY" value="-1" />
-    </php>
-
     <testsuites>
-        <testsuite name="Project Test Suite">
+        <testsuite name="all">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-        </whitelist>
-    </filter>
+    <php>
+        <server name="KERNEL_CLASS" value="\App\Kernel"/>
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="weak"/>
+
+        <!-- ###+ symfony/framework-bundle ### -->
+        <env name="APP_ENV" value="test"/>
+        <env name="APP_SECRET" value="c6629d790bed91f7276b21832b2aae83"/>
+        <!-- ###- symfony/framework-bundle ### -->
+
+        <!-- ###+ doctrine/doctrine-bundle ### -->
+        <!-- ###- doctrine/doctrine-bundle ### -->
+
+        <!-- ###+ enqueue/enqueue-bundle ### -->
+        <!-- ###- enqueue/enqueue-bundle ### -->
+    </php>
+
+    <extensions>
+        <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
+        <!--        <extension class="Speicher210\FunctionalTestBundle\Extension\RestRequestFailTestExpectedOutputFileUpdater"/>-->
+    </extensions>
+    <!--    <listeners>-->
+    <!--        <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">-->
+    <!--            <arguments>-->
+    <!--                <array>-->
+    <!--                    <element key="slowThreshold">-->
+    <!--                        <integer>250</integer>-->
+    <!--                    </element>-->
+    <!--                    <element key="reportLength">-->
+    <!--                        <integer>10</integer>-->
+    <!--                    </element>-->
+    <!--                </array>-->
+    <!--            </arguments>-->
+    <!--        </listener>-->
+    <!--    </listeners>-->
 </phpunit>
