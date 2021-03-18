@@ -18,16 +18,16 @@ before_script:
   - docker network create duo
   - mv .env.ci .env
 #
-#test-backend:
-#  stage: test
-#  script:
-#    - docker-compose up -d
-#    - docker-compose exec -T php composer install
+test-backend:
+  stage: test
+  script:
+    - docker-compose up -d
+    - docker-compose exec -T php composer install
 #    - docker-compose exec -T php composer cs-check
 #    - docker-compose exec -T php composer analyse
-#    - docker-compose exec -T php composer test
-#  only:
-#    - branches
+    - docker-compose exec -T php composer test
+  only:
+    - branches
 
 deploy-prod:
   stage: deploy
