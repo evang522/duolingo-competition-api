@@ -50,6 +50,7 @@ class CompetitionRepository extends EntityRepository
             new \DateTimeImmutable(),
             'Default_Competition',
             $hostRepository->getOneOrCreateDefault(),
+            null,
         );
 
         $this->store($competition);

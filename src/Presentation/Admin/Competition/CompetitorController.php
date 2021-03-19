@@ -29,8 +29,8 @@ class CompetitorController extends AbstractCrudController
         return [
             Field::new('id')
                 ->hideOnForm(),
-            Field::new('duolingoId'),
-            Field::new('username', 'Duolingo Username')->hideOnIndex(),
+            Field::new('duolingoId')->hideOnIndex(),
+            Field::new('username', 'Duolingo Username'),
             Field::new('profilePhotoUrl'),
             Field::new('currentLanguage'),
             NumberField::new('totalPoints'),

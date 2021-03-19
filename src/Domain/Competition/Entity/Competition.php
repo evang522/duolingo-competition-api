@@ -11,21 +11,31 @@ use Doctrine\Common\Collections\Collection;
 class Competition
 {
     private string $id;
+
     private DateTimeImmutable $startDate;
+
     private DateTimeImmutable $endDate;
+
     private string $name;
+
     /** @var Collection|BasePoints[] */
     private Collection $basePoints;
+
     /** @var Collection|Competitor[] */
     private Collection $competitors;
+
     private Host $host;
+
     private ?Competitor $winner;
+
+    private ?string $description;
 
     public function __construct(
         DateTimeImmutable $startDate,
         DateTimeImmutable $endDate,
         string $name,
         Host $host,
+        ?string $description,
         ?Competitor $winner = null
     ) {
         $this->id          = CompetitionId::generate()->asString();
@@ -36,6 +46,17 @@ class Competition
         $this->competitors = new ArrayCollection();
         $this->host        = $host;
         $this->winner      = $winner;
+        $this->description = $description;
+    }
+
+    public function description(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 
     public function winner(): ?Competitor

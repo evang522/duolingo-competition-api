@@ -32,5 +32,6 @@
   "id": "00000000-0000-4000-a000-000000000001",
   "startDate": "@string@.isDateTime()",
   "endDate": "@string@.isDateTime()",
-  "name": "Default Competition1"
+  "name": "Default Competition1",
+  "description": "<h1>Hallo</h1>"
 }

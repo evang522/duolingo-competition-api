@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Form\Type\CrudAutocompleteType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -53,6 +54,7 @@ class CompetitionController extends AbstractCrudController
                 ->setFieldFqcn(Competitor::class),
             Field::new('startDate'),
             Field::new('endDate'),
+            TextEditorField::new('description'),
             AssociationField::new('winner')
                 ->autocomplete()
                 ->setFormType(CrudAutocompleteType::class)
@@ -106,7 +108,8 @@ class CompetitionController extends AbstractCrudController
             new \DateTimeImmutable(),
             new \DateTimeImmutable(),
             'New Competition',
-            $host
+            $host,
+            null,
         );
     }
 }

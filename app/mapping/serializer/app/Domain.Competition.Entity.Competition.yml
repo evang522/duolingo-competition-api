@@ -6,6 +6,8 @@ App\Domain\Competition\Entity\Competition:
     name: ~
     startDate: ~
     endDate: ~
+    description:
+      type: string
   virtual_properties:
     winner:
       serialized_name: winner

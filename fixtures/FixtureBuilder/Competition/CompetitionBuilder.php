@@ -22,7 +22,8 @@ class CompetitionBuilder
             new \DateTimeImmutable('2050-08-16'),
             new \DateTimeImmutable('2050-08-26'),
             'Default Competition',
-            new Host('Default Host', new Credentials('authToken'))
+            new Host('Default Host', new Credentials('authToken')),
+            null,
         );
     }
 
@@ -46,6 +47,13 @@ class CompetitionBuilder
     public function withId(string $id): self
     {
         $this->competition->setIdFromString($id);
+
+        return $this;
+    }
+
+    public function withDescription(string $description): self
+    {
+        $this->competition->setDescription($description);
 
         return $this;
     }

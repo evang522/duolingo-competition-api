@@ -12,6 +12,7 @@
         <field name="startDate" type="datetime_immutable" column="start_date" nullable="false"/>
         <field name="endDate" type="datetime_immutable" column="end_date" nullable="false"/>
         <field name="name" type="string" column="name" nullable="false"/>
+        <field name="description" type="text" column="description" nullable="true"/>
         <many-to-many field="competitors" target-entity="App\Domain\Competition\Entity\Competitor"
                       inversed-by="competitions">
             <cascade>
