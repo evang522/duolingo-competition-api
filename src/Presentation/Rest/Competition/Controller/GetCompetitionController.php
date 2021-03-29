@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class GetCompetitionController extends AbstractController
 {
+    public const SECONDS_BEFORE_UPDATE = 240;
+
     private CompetitionRepository $competitionRepository;
     private ViewHandlerInterface $viewHandler;
     private CommandBus $commandBus;
@@ -24,10 +26,11 @@ class GetCompetitionController extends AbstractController
         CompetitionRepository $competitionRepository,
         ViewHandlerInterface $viewHandler,
         CommandBus $commandBus
-    ) {
+    )
+    {
         $this->competitionRepository = $competitionRepository;
-        $this->viewHandler           = $viewHandler;
-        $this->commandBus            = $commandBus;
+        $this->viewHandler = $viewHandler;
+        $this->commandBus = $commandBus;
     }
 
     public function __invoke(Request $request): Response
@@ -37,8 +40,9 @@ class GetCompetitionController extends AbstractController
         $competition = $this->competitionRepository->get($id);
 
         $updatedAt = $competition->updatedAt();
+        $now = new \DateTimeImmutable();
 
-        if ($updatedAt === null || (new \DateTimeImmutable())->getTimestamp() - $updatedAt->getTimestamp() >= 600) {
+        if ($updatedAt === null || $now->getTimestamp() - $updatedAt->getTimestamp() >= self::SECONDS_BEFORE_UPDATE) {
             $this->commandBus->handle(new UpdateCompetitionParticipants($competition->id()));
             $competition = $this->competitionRepository->get($competition->id());
 
