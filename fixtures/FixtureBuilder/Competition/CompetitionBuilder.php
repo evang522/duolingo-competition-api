@@ -58,6 +58,13 @@ class CompetitionBuilder
         return $this;
     }
 
+    public function withUpdatedAt(\DateTimeImmutable $updatedAt): self
+    {
+        $this->competition->setUpdatedAt($updatedAt);
+
+        return $this;
+    }
+
     public function withCompetitor(Competitor $competitor): self
     {
         $this->competition->addCompetitor($competitor);

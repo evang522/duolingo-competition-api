@@ -16,6 +16,8 @@ class Competition
 
     private DateTimeImmutable $endDate;
 
+    private ?DateTimeImmutable $updatedAt;
+
     private string $name;
 
     /** @var Collection|BasePoints[] */
@@ -47,6 +49,17 @@ class Competition
         $this->host        = $host;
         $this->winner      = $winner;
         $this->description = $description;
+        $this->updatedAt   = null;
+    }
+
+    public function updatedAt(): ?DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
     }
 
     public function description(): ?string

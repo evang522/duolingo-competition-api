@@ -54,6 +54,7 @@ class CompetitionController extends AbstractCrudController
                 ->setFieldFqcn(Competitor::class),
             Field::new('startDate'),
             Field::new('endDate'),
+            Field::new('updatedAt'),
             TextEditorField::new('description'),
             AssociationField::new('winner')
                 ->autocomplete()

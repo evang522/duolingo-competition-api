@@ -24,6 +24,7 @@ final class TestReturns200WithFullData extends AbstractLoader
             ->withCompetitor($competitor2)
             ->withCompetitor($competitor3)
             ->withDescription('<h1>Hallo</h1>')
+            ->withUpdatedAt(new \DateTimeImmutable())
             ->build();
 
         $basePoints = new BasePoints($competitor1, $competition, 1000);

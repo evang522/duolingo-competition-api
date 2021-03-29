@@ -32,5 +32,8 @@ class UpdateCompetitionParticipantsHandler implements MessageHandlerInterface
                 new UpdateCompetitorStats($competitor->id(), $competition->host()->id())
             );
         }
+
+        $competition->setUpdatedAt(new \DateTimeImmutable());
+        $this->competitionRepository->store($competition);
     }
 }
