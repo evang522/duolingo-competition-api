@@ -80,6 +80,19 @@ class CompetitionRepository extends EntityRepository
     /**
      * @return Competition[]
      */
+    public function findAllActiveCompetitions(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.startDate < :now')
+            ->where('c.endDate > :now')
+            ->setParameter('now', new DateTime())
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * @return Competition[]
+     */
     public function findAllEndingWithin10Minutes(): array
     {
         return $this->createQueryBuilder('c')

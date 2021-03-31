@@ -30,7 +30,7 @@ class UpdateAllCompetitionsCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $competitions = $this->competitionRepository->findAll();
+        $competitions = $this->competitionRepository->findAllActiveCompetitions();
         foreach ($competitions as $competition) {
             $this->commandBus->handle(
                 new UpdateCompetitionParticipants($competition->id())
