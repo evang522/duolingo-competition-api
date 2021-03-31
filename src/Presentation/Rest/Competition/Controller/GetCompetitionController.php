@@ -26,21 +26,21 @@ class GetCompetitionController extends AbstractController
         CompetitionRepository $competitionRepository,
         ViewHandlerInterface $viewHandler,
         CommandBus $commandBus
-    )
-    {
+    ) {
         $this->competitionRepository = $competitionRepository;
-        $this->viewHandler = $viewHandler;
-        $this->commandBus = $commandBus;
+        $this->viewHandler           = $viewHandler;
+        $this->commandBus            = $commandBus;
     }
 
     public function __invoke(Request $request): Response
     {
+        // TODO: Replace this behavior with a query.
         $id = CompetitionId::fromString($request->get('id'));
 
         $competition = $this->competitionRepository->get($id);
 
         $updatedAt = $competition->updatedAt();
-        $now = new \DateTimeImmutable();
+        $now       = new \DateTimeImmutable();
 
         if ($updatedAt === null || $now->getTimestamp() - $updatedAt->getTimestamp() >= self::SECONDS_BEFORE_UPDATE) {
             $this->commandBus->handle(new UpdateCompetitionParticipants($competition->id()));

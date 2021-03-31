@@ -3,9 +3,18 @@ App\Domain\Competition\Entity\Competition:
   properties:
     id:
       type: string
-    name: ~
-    startDate: ~
-    endDate: ~
+    name:
+      groups:
+        - competition-listing
+        - Default
+    startDate:
+      groups:
+        - competition-listing
+        - Default
+    endDate:
+      groups:
+        - competition-listing
+        - Default
     description:
       type: string
   virtual_properties:
