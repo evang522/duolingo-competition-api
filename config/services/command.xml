@@ -13,5 +13,6 @@
         <service id="App\Infrastructure\Domain\Competition\CommandHandler\UpdateCompetitorStatsHandler"/>
         <service id="App\Infrastructure\Domain\Competition\CommandHandler\UpdateCompetitionParticipantsHandler"/>
         <service id="App\Infrastructure\Domain\Competition\CommandHandler\SetBasePointsHandler"/>
+        <service id="App\Infrastructure\Domain\Competition\CommandHandler\FinishCompetitionHandler"/>
     </services>
 </container>

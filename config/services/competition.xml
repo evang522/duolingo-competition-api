@@ -12,8 +12,11 @@
         <service id="App\Infrastructure\Domain\Competition\Repository\CompetitorRepository"/>
         <service id="App\Infrastructure\Domain\Competition\Repository\CompetitionRepository"/>
         <service id="App\Infrastructure\Domain\Competition\Repository\BasePointsRepository"/>
+        <service id="App\Infrastructure\Domain\Competition\Repository\FinalPointsRepository"/>
         <service public="true" id="App\Infrastructure\Domain\Competition\Service\Serializer\CompetitionSerializer"/>
         <service public="true" id="App\Infrastructure\Domain\Competition\Service\GetCompetitorsForCompetition"/>
+        <service public="true" id="App\Infrastructure\Domain\Competition\Service\CompetitionPoints"/>
         <service public="true" id="App\Infrastructure\Domain\Competition\Listener\CompetitionStartedListener"/>
+        <service public="true" id="App\Infrastructure\Domain\Competition\Listener\CompetitionEndedListener"/>
     </services>
 </container>

@@ -29,6 +29,7 @@ class CompetitorRepository extends EntityRepository
             null,
             'DE',
             '12345',
+            0,
             0
         );
 
@@ -41,6 +42,17 @@ class CompetitorRepository extends EntityRepository
     {
         $this->_em->persist($competitor);
         $this->_em->flush();
+    }
+
+    public function get(CompetitionId $competitionId): Competitor
+    {
+        $competitor = $this->find($competitionId);
+
+        if ($competitor === null) {
+            throw new \RuntimeException('Competitor Not Found');
+        }
+
+        return $competitor;
     }
 
     /** @return Competitor[] */

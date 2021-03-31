@@ -58,6 +58,7 @@ class CompetitionController extends AbstractCrudController
             TextEditorField::new('description'),
             AssociationField::new('winner')
                 ->autocomplete()
+                ->renderAsNativeWidget()
                 ->setFormType(CrudAutocompleteType::class)
                 ->setFieldFqcn(Competitor::class),
         ];

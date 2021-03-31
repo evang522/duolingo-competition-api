@@ -13,5 +13,6 @@
         <service id="App\Application\Command\User\CreateUserCommand"/>
         <service id="App\Application\Command\Competition\UpdateAllCompetitionsCommand"/>
         <service id="App\Application\Command\Competition\DispatchCompetitionStartedEvents"/>
+        <service id="App\Application\Command\Competition\DispatchCompetitionEndingEvents"/>
     </services>
 </container>

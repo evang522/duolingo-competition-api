@@ -15,6 +15,7 @@
         <service id="App\Presentation\Admin\Competition\HostController"/>
         <service id="App\Presentation\Admin\User\AdminUserController"/>
         <service id="App\Presentation\Admin\Competition\BasePointsController"/>
+        <service id="App\Presentation\Admin\Competition\FinalPointsController"/>
         <service id="App\Presentation\Rest\Competition\Controller\GetCompetitionController"/>
         <service id="App\Presentation\Rest\Competition\Controller\ListCompetitionsController"/>
     </services>

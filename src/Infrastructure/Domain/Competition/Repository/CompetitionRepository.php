@@ -76,4 +76,17 @@ class CompetitionRepository extends EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * @return Competition[]
+     */
+    public function findAllEndingWithin10Minutes(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.endDate BETWEEN :now AND :tenMinutesFromNow')
+            ->setParameter('now', new DateTime())
+            ->setParameter('tenMinutesFromNow', (new DateTime())->add(new \DateInterval('PT10M')))
+            ->getQuery()
+            ->getResult();
+    }
 }

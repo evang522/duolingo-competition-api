@@ -7,20 +7,19 @@ namespace App\Infrastructure\Domain\Competition\Service;
 use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\Competitor;
 use App\Domain\Competition\Model\CompetitorForCompetition;
-use App\Infrastructure\Domain\Competition\Repository\BasePointsRepository;
 use App\Infrastructure\Domain\Competition\Repository\CompetitorRepository;
 
 class GetCompetitorsForCompetition
 {
     private CompetitorRepository $competitorRepository;
-    private BasePointsRepository $basePointsRepository;
+    private CompetitionPoints $competitionPoints;
 
     public function __construct(
         CompetitorRepository $competitorRepository,
-        BasePointsRepository $basePointsRepository
+        CompetitionPoints $competitionPoints
     ) {
         $this->competitorRepository = $competitorRepository;
-        $this->basePointsRepository = $basePointsRepository;
+        $this->competitionPoints    = $competitionPoints;
     }
 
     /** @return CompetitorForCompetition[] */
@@ -30,20 +29,16 @@ class GetCompetitorsForCompetition
 
         return \array_map(
             function (Competitor $competitor) use ($competition): CompetitorForCompetition {
-                $basePoints = $this->basePointsRepository
-                    ->findForCompetitorAndCompetition($competitor, $competition);
-
-                $totalPoints = $competitor->totalPoints();
-
-                if ($basePoints !== null) {
-                    $totalPoints = \max([0, $totalPoints - $basePoints->basePoints()]);
-                }
+                $pointsForCompetition = $this->competitionPoints->getForCompetitorAndCompetition(
+                    $competition,
+                    $competitor
+                );
 
                 return new CompetitorForCompetition(
                     $competition->id()->asString(),
                     $competitor->username(),
                     $competitor->duolingoId(),
-                    $totalPoints,
+                    $pointsForCompetition,
                     $competitor->currentLanguage(),
                     $competitor->profilePhotoUrl(),
                     $competitor->streak()

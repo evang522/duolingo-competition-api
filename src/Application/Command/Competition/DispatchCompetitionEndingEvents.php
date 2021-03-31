@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Application\Command\Competition;
 
-use App\Domain\Competition\Event\CompetitionStarted;
+use App\Domain\Competition\Event\CompetitionEnded;
 use App\Infrastructure\Domain\Competition\Repository\CompetitionRepository;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class DispatchCompetitionStartedEvents extends Command
+class DispatchCompetitionEndingEvents extends Command
 {
     private CompetitionRepository $competitionRepository;
     private EventDispatcherInterface $eventDispatcher;
@@ -28,23 +28,27 @@ class DispatchCompetitionStartedEvents extends Command
 
     public function configure(): void
     {
-        $this->setName('duo:competition:dispatch_competition_started_events');
+        $this->setName('duo:competition:dispatch_competition_ended_events');
     }
 
     public function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
 
-        $competitions = $this->competitionRepository->findAllStartingWithin10Minutes();
+        $competitions = $this->competitionRepository->findAllEndingWithin10Minutes();
 
         if (\count($competitions) === 0) {
-            $io->writeln('There are no competitions starting within 10 minutes');
+            $io->writeln('There are no competitions ending within 10 minutes');
 
             return 0;
         }
 
         foreach ($competitions as $competition) {
-            $this->eventDispatcher->dispatch(new CompetitionStarted($competition));
+            if ($competition->winner() !== null) {
+                continue;
+            }
+
+            $this->eventDispatcher->dispatch(new CompetitionEnded($competition));
             $io->writeln(\sprintf('Event dispatched for competition "%s"', $competition->id()->asString()));
         }
 

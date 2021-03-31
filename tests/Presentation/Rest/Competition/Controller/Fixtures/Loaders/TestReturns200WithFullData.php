@@ -27,12 +27,16 @@ final class TestReturns200WithFullData extends AbstractLoader
             ->withUpdatedAt(new \DateTimeImmutable())
             ->build();
 
-        $basePoints = new BasePoints($competitor1, $competition, 1000);
+        $basePoints  = new BasePoints($competitor1, $competition, 1000);
+        $basePoints1 = new BasePoints($competitor2, $competition, 0);
+        $basePoints2 = new BasePoints($competitor3, $competition, 0);
 
         $this->persist($competition);
         $this->persist($competitor1);
         $this->persist($competitor2);
         $this->persist($competitor3);
         $this->persist($basePoints);
+        $this->persist($basePoints1);
+        $this->persist($basePoints2);
     }
 }
