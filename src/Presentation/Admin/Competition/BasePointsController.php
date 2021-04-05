@@ -59,7 +59,7 @@ class BasePointsController extends AbstractCrudController
     {
         return new BasePoints(
             $this->competitorRepository->getAny(),
-            $this->competitionRepository->getAny(),
+            $this->competitionRepository->getOneOrCreateDefault(),
             0
         );
     }

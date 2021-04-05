@@ -12,6 +12,6 @@
 
         <field name="finalPoints" type="integer" column="final_points" nullable="false"/>
         <many-to-one field="competition" target-entity="App\Domain\Competition\Entity\Competition"/>
-        <one-to-one field="competitor" target-entity="App\Domain\Competition\Entity\Competitor"/>
+        <many-to-one field="competitor" target-entity="App\Domain\Competition\Entity\Competitor"/>
     </entity>
 </doctrine-mapping>

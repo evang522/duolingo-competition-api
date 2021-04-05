@@ -15,9 +15,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CompetitionRepository extends EntityRepository
 {
-    public function __construct(
-        EntityManager $em
-    ) {
+    public function __construct(EntityManager $em)
+    {
         parent::__construct($em, Competition::class);
     }
 
@@ -36,7 +35,7 @@ class CompetitionRepository extends EntityRepository
         return $this->count(['host' => $hostId]) >= 1;
     }
 
-    public function getAny(): Competition
+    public function getOneOrCreateDefault(): Competition
     {
         $competition = $this->findOneBy([]);
         if ($competition !== null) {

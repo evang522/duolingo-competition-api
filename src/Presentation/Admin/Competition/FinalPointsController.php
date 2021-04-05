@@ -59,7 +59,7 @@ class FinalPointsController extends AbstractCrudController
     {
         return new FinalPoints(
             $this->competitorRepository->getAny(),
-            $this->competitionRepository->getAny(),
+            $this->competitionRepository->getOneOrCreateDefault(),
             0
         );
     }
