@@ -23,7 +23,8 @@ class DashboardController extends AbstractDashboardController
 
     public function __construct(
         AdminUrlGenerator $adminUrlGenerator
-    ) {
+    )
+    {
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
@@ -52,7 +53,8 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linkToDashboard('Home'),
             MenuItem::section('Competition'),
-            MenuItem::linkToCrud('Competitions', 'fa fa-flag', Competition::class),
+            MenuItem::linkToCrud('Competitions', 'fa fa-flag', Competition::class)
+                ->setDefaultSort(['startDate' => 'DESC']),
             MenuItem::linkToCrud('Participants', 'fa fa-running', Competitor::class),
             MenuItem::linkToCrud('Hosts', 'fa fa-user', Host::class),
             MenuItem::linkToCrud('BasePoints', 'fa fa-user', BasePoints::class),

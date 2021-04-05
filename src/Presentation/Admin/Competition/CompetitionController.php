@@ -29,9 +29,10 @@ class CompetitionController extends AbstractCrudController
         HostRepository $hostRepository,
         string $baseUrl,
         string $frontendBaseUrl
-    ) {
-        $this->hostRepository  = $hostRepository;
-        $this->baseUrl         = $baseUrl;
+    )
+    {
+        $this->hostRepository = $hostRepository;
+        $this->baseUrl = $baseUrl;
         $this->frontendBaseUrl = $frontendBaseUrl;
     }
 

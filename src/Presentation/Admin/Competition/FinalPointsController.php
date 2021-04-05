@@ -12,6 +12,7 @@ use App\Infrastructure\Domain\Competition\Repository\CompetitorRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
@@ -25,14 +26,22 @@ class FinalPointsController extends AbstractCrudController
     public function __construct(
         CompetitorRepository $competitorRepository,
         CompetitionRepository $competitionRepository
-    ) {
-        $this->competitorRepository  = $competitorRepository;
+    )
+    {
+        $this->competitorRepository = $competitorRepository;
         $this->competitionRepository = $competitionRepository;
     }
 
     public static function getEntityFqcn(): string
     {
         return FinalPoints::class;
+    }
+
+
+    public function configureFilters(Filters $filters): Filters
+    {
+        return $filters
+            ->add('competition');
     }
 
     public function configureFields(string $pageName): iterable
