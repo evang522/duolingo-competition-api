@@ -8,6 +8,7 @@
             <bind key="$baseUrl" type="string">%base_url%</bind>
             <bind key="$frontendBaseUrl" type="string">%client.base_url%</bind>
         </defaults>
+        <service id="App\Presentation\ApiDocs\SwaggerController"/>
         <service id="App\Presentation\Admin\Root\DashboardController"/>
         <service id="App\Presentation\Admin\Root\LoginController"/>
         <service id="App\Presentation\Admin\Competition\CompetitionController"/>

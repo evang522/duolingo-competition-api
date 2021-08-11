@@ -1,12 +1,23 @@
 {
   "swagger": "2.0",
-  "basePath": "/",
+  "basePath": "/api",
   "info": {
-    "title": "Boilerplate Symfony Application",
-    "description": "Change this description however you like",
+    "title": "Duo-Competition API",
+    "description": "Duo-Competition API allows friends to compete against each other in private groups with duolingo.",
     "version": "1.0"
   },
   "definitions": {},
   "paths": {
+    "/api": {
+      "get": {
+        "tags": ["Fun"],
+        "summary": "Does some stuff",
+        "responses": {
+          "200": {
+            "description": "When it found it"
+          }
+        }
+      }
+    }
   }
 }
