@@ -8,13 +8,13 @@
   },
   "definitions": {},
   "paths": {
-    "/api": {
+    "/competition": {
       "get": {
-        "tags": ["Fun"],
-        "summary": "Does some stuff",
+        "tags": ["Competition"],
+        "summary": "Returns a list of public competitions",
         "responses": {
           "200": {
-            "description": "When it found it"
+            "description": "All public competitions"
           }
         }
       }

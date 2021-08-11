@@ -14,6 +14,7 @@
         <field name="updatedAt" type="datetime_immutable" column="updated_at" nullable="true"/>
         <field name="name" type="string" column="name" nullable="false"/>
         <field name="description" type="text" column="description" nullable="true"/>
+        <field name="public" type="boolean" column="public" nullable="false"/>
         <many-to-many field="competitors" target-entity="App\Domain\Competition\Entity\Competitor"
                       inversed-by="competitions">
             <cascade>

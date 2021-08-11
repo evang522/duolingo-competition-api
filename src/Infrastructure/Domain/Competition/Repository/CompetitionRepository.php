@@ -8,10 +8,10 @@ use App\Domain\Competition\Entity\Competition;
 use App\Domain\Competition\Entity\CompetitionId;
 use App\Domain\Competition\Entity\Host;
 use App\Domain\Competition\Entity\HostId;
+use App\Domain\Competition\Exception\CompetitionNotFound;
 use App\Infrastructure\Repository\EntityRepository;
 use DateTime;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CompetitionRepository extends EntityRepository
 {
@@ -24,10 +24,16 @@ class CompetitionRepository extends EntityRepository
     {
         $competition = $this->find($competitionId->asString());
         if ($competition === null) {
-            throw new NotFoundHttpException('Competition not found');
+            throw new CompetitionNotFound('Competition not found');
         }
 
         return $competition;
+    }
+
+    /** @return Competition[] */
+    public function findAllPublic(): array
+    {
+        return $this->findBy(['public' => true]);
     }
 
     public function hostConnectedToCompetitions(HostId $hostId): bool

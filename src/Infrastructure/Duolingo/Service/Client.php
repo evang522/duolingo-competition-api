@@ -35,10 +35,10 @@ class Client
 
         return new UserInformation(
             $body['username'],
-            (int)$body['totalXp'],
+            (int) $body['totalXp'],
             $body['picture'],
             $body['learningLanguage'],
-            (int)$body['streak']
+            (int) $body['streak']
         );
     }
 }

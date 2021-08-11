@@ -33,7 +33,7 @@
 
     <extensions>
         <extension class="DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension"/>
-        <!--        <extension class="Speicher210\FunctionalTestBundle\Extension\RestRequestFailTestExpectedOutputFileUpdater"/>-->
+        <!--                <extension class="Speicher210\FunctionalTestBundle\Extension\RestRequestFailTestExpectedOutputFileUpdater"/>-->
     </extensions>
     <!--    <listeners>-->
     <!--        <listener class="JohnKary\PHPUnit\Listener\SpeedTrapListener">-->

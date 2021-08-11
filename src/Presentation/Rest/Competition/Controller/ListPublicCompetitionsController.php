@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class ListCompetitionsController extends AbstractController
+class ListPublicCompetitionsController extends AbstractController
 {
     private CompetitionRepository $competitionRepository;
     private ViewHandlerInterface $viewHandler;
@@ -26,7 +26,7 @@ class ListCompetitionsController extends AbstractController
 
     public function __invoke(Request $request): Response
     {
-        $competitions = $this->competitionRepository->findAll();
+        $competitions = $this->competitionRepository->findAllPublic();
 
         $view = View::create($competitions);
 

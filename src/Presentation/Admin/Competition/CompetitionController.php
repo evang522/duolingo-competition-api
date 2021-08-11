@@ -29,10 +29,9 @@ class CompetitionController extends AbstractCrudController
         HostRepository $hostRepository,
         string $baseUrl,
         string $frontendBaseUrl
-    )
-    {
-        $this->hostRepository = $hostRepository;
-        $this->baseUrl = $baseUrl;
+    ) {
+        $this->hostRepository  = $hostRepository;
+        $this->baseUrl         = $baseUrl;
         $this->frontendBaseUrl = $frontendBaseUrl;
     }
 
@@ -48,6 +47,7 @@ class CompetitionController extends AbstractCrudController
                 ->hideOnForm()
                 ->setTemplatePath('/field/uuid.html.twig'),
             Field::new('name'),
+            Field::new('public'),
             AssociationField::new('host'),
             AssociationField::new('competitors')
                 ->autocomplete()

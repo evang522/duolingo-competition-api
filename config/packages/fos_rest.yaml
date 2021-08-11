@@ -23,6 +23,10 @@ fos_rest:
     flatten_exception_format: legacy
     serializer_error_renderer: true
     map_exception_codes: true
+    codes:
+      "App\\Infrastructure\\Exception\\NotFound": 404
+    messages:
+      "App\\Infrastructure\\Exception\\NotFound": false
   body_listener: true
   serializer:
     serialize_null: true

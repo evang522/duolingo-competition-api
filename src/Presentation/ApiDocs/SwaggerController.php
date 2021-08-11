@@ -35,6 +35,6 @@ final class SwaggerController extends AbstractController
             throw new \RuntimeException('Could not find swagger definition file.');
         }
 
-        return \json_decode($swagger, true, 512, JSON_THROW_ON_ERROR);
+        return \json_decode($swagger, true, 512, \JSON_THROW_ON_ERROR);
     }
 }

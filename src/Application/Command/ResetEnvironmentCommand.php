@@ -50,9 +50,8 @@ class ResetEnvironmentCommand extends Command
         $io->text('Running migrations.');
         $this->runCommand('doctrine:migrations:migrate');
 
-//        $io->text('Loading Fixtures');
-//        $this->runCommand('doctrine:fixtures:load', ['--append' => '']);
-
+        $io->text('Loading Fixtures');
+        $this->runCommand('doctrine:fixtures:load', ['--append' => '']);
 
         $io->success('Successfully Reset DB');
 

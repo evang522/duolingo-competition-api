@@ -26,9 +26,8 @@ class FinalPointsController extends AbstractCrudController
     public function __construct(
         CompetitorRepository $competitorRepository,
         CompetitionRepository $competitionRepository
-    )
-    {
-        $this->competitorRepository = $competitorRepository;
+    ) {
+        $this->competitorRepository  = $competitorRepository;
         $this->competitionRepository = $competitionRepository;
     }
 
@@ -36,7 +35,6 @@ class FinalPointsController extends AbstractCrudController
     {
         return FinalPoints::class;
     }
-
 
     public function configureFilters(Filters $filters): Filters
     {

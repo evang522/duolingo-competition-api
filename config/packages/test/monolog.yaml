@@ -1,0 +1,19 @@
+monolog:
+  handlers:
+    main:
+      type:         fingers_crossed
+      action_level: info
+      handler:      grouped
+    file:
+      type: stream
+      path: "%kernel.logs_dir%/%kernel.environment%.log"
+      level: info
+      channels: ['!event', '!translation']
+    grouped:
+      type:    group
+      members: [file]
+    #      members: [file, sentry]
+    console:
+      type: console
+      process_psr_3_messages: false
+      channels: ["!event", "!doctrine", "!console"]

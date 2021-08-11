@@ -32,6 +32,8 @@ class Competition
 
     private ?string $description;
 
+    private bool $public;
+
     public function __construct(
         DateTimeImmutable $startDate,
         DateTimeImmutable $endDate,
@@ -50,6 +52,7 @@ class Competition
         $this->winner      = $winner;
         $this->description = $description;
         $this->updatedAt   = null;
+        $this->public      = true;
     }
 
     public function updatedAt(): ?DateTimeImmutable
@@ -70,6 +73,16 @@ class Competition
     public function setDescription(?string $description): void
     {
         $this->description = $description;
+    }
+
+    public function isPublic(): bool
+    {
+        return $this->public;
+    }
+
+    public function setPublic(bool $public): void
+    {
+        $this->public = $public;
     }
 
     public function winner(): ?Competitor
@@ -176,5 +189,10 @@ class Competition
         $this->name = $name;
 
         return $this;
+    }
+
+    public function competitorCount(): int
+    {
+        return $this->competitors->count();
     }
 }

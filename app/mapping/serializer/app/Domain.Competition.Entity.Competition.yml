@@ -3,6 +3,8 @@ App\Domain\Competition\Entity\Competition:
   properties:
     id:
       type: string
+      groups:
+        - competition-listing
     name:
       groups:
         - competition-listing
@@ -18,6 +20,11 @@ App\Domain\Competition\Entity\Competition:
     description:
       type: string
   virtual_properties:
+    competitorCount:
+      type: int
+      groups:
+        - competition-listing
+        - Default
     winner:
       serialized_name: winner
       exp: service('App\\Infrastructure\\Domain\\Competition\\Service\\Serializer\\CompetitionSerializer').winnerId(object)

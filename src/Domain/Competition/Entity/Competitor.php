@@ -15,6 +15,7 @@ class Competitor
     private string $currentLanguage;
     private string $duolingoId;
     private int $totalPoints;
+    /** @var Collection|Competition[] */
     private Collection $competitions;
     private int $streak;
 
@@ -46,7 +47,8 @@ class Competitor
         $this->streak = $streak;
     }
 
-    public function competitions()
+    /** @return Competition[] */
+    public function competitions(): Collection
     {
         return $this->competitions;
     }

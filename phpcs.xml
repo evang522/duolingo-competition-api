@@ -36,4 +36,7 @@
     <file>public/</file>
     <file>src/</file>
     <file>tests/</file>
+
+<!--    Paths to Exclude-->
+    <exclude-pattern>/config/*</exclude-pattern>
 </ruleset>

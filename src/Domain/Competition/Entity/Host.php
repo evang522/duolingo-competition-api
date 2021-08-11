@@ -12,6 +12,7 @@ class Host
 {
     private string $id;
     private Credentials $credentials;
+    /** @var Competition[]|Collection */
     private Collection $competitions;
     private string $emailAddress;
 
@@ -25,29 +26,21 @@ class Host
         $this->emailAddress = $emailAddress;
     }
 
-    public function setCredentials(Credentials $credentials): void
-    {
-        $this->credentials = $credentials;
-    }
-
-    public function setCompetitions($competitions): void
-    {
-        $this->competitions = $competitions;
-    }
-
-    public function setEmailAddress(string $emailAddress): void
-    {
-        $this->emailAddress = $emailAddress;
-    }
-
     public function id(): HostId
     {
         return HostId::fromString($this->id);
     }
 
-    public function competitions()
+    /** @return Collection|Competition[] */
+    public function competitions(): Collection
     {
         return $this->competitions;
+    }
+
+    /** @param Competition[]|Collection $competitions */
+    public function setCompetitions(Collection $competitions): void
+    {
+        $this->competitions = $competitions;
     }
 
     public function __toString(): string
@@ -60,8 +53,18 @@ class Host
         return $this->emailAddress;
     }
 
+    public function setEmailAddress(string $emailAddress): void
+    {
+        $this->emailAddress = $emailAddress;
+    }
+
     public function credentials(): Credentials
     {
         return $this->credentials;
+    }
+
+    public function setCredentials(Credentials $credentials): void
+    {
+        $this->credentials = $credentials;
     }
 }
